@@ -44,7 +44,7 @@ fun CustomAppBarWithCard(title: String, onBackClick: (() -> Unit)? = null) {
             title = {
                 Text(text = title,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground // title color theme অনুযায়ী
+                    color = MaterialTheme.colorScheme.onBackground
                 ) },
             navigationIcon = {
                 if (onBackClick != null) {
@@ -52,7 +52,7 @@ fun CustomAppBarWithCard(title: String, onBackClick: (() -> Unit)? = null) {
                         Icon(
                             painter = painterResource(id = R.drawable.arrow_blue),
                             contentDescription = "Back",
-                            tint = Color.Unspecified // 👈 আসল রঙ show করবে
+                            tint = Color.Unspecified
                         )
                     }
                 }

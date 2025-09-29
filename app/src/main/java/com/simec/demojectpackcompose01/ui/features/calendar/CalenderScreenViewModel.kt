@@ -1,8 +1,8 @@
-package com.simec.demojectpackcompose01.ui.features.call
+package com.simec.demojectpackcompose01.ui.features.calendar
 
 /**
  * Created by Emdadul Haque Siam on 17,September,2025
  * Copyright (c): SIMEC System Ltd.
  */
-class CallScreenViewModel {
+class CalenderScreenViewModel {
 }

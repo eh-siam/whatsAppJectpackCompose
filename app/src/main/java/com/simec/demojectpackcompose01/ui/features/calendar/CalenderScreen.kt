@@ -1,4 +1,4 @@
-package com.simec.demojectpackcompose01.ui.features.call
+package com.simec.demojectpackcompose01.ui.features.calendar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.simec.demojectpackcompose01.R
-import com.simec.demojectpackcompose01.ui.features.home.HomeScreen
 
 /**
  * Created by Emdadul Haque Siam on 17,September,2025
@@ -38,7 +37,7 @@ import com.simec.demojectpackcompose01.ui.features.home.HomeScreen
  */
 
 @Composable
-fun CallScreen(navController: NavHostController){
+fun CalenderScreen(navController: NavHostController){
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -129,5 +128,5 @@ fun CallScreen(navController: NavHostController){
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewMyScreen() {
-    CallScreen(navController = NavHostController(LocalContext.current))
+    CalenderScreen(navController = NavHostController(LocalContext.current))
 }

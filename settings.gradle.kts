@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "What'sAppJectpackCompose"
+rootProject.name = "E-planner"
 include(":app")
  

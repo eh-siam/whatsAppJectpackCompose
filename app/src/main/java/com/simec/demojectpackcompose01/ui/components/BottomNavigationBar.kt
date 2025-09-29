@@ -18,7 +18,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
+
 
 /**
  * Created by Emdadul Haque Siam on 22,September,2025
@@ -39,32 +42,32 @@ fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         BottomNavigationItem(
             title = "Home",
+            route = "home",
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
-            route = "home",
             hasNews = false
         ),
         BottomNavigationItem(
-            title = "Call",
-            route = "call",
-            selectedIcon = Icons.Filled.Call,
-            unselectedIcon = Icons.Outlined.Call,
+            title = "Calendar",
+            route = "calendar",
+            selectedIcon = Icons.Filled.Notifications,
+            unselectedIcon =Icons.Outlined.Notifications,
             hasNews = false
         ),
         BottomNavigationItem(
-            title = "Notification",
-            route = "notification",
+            title = "Events",
+            route = "events",
             selectedIcon = Icons.Filled.Notifications,
             unselectedIcon = Icons.Outlined.Notifications,
             hasNews = false,
             badgeCount = 23
         ),
         BottomNavigationItem(
-            title = "Setting",
+            title = "Settings",
             route = "settings",
             selectedIcon = Icons.Filled.Settings,
             unselectedIcon = Icons.Outlined.Settings,
-            hasNews = true
+            hasNews = false
         ),
     )
 
