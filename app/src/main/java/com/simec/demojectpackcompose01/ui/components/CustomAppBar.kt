@@ -1,7 +1,10 @@
 package com.simec.demojectpackcompose01.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -17,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.simec.demojectpackcompose01.R
 
@@ -30,37 +34,51 @@ import com.simec.demojectpackcompose01.R
 fun CustomAppBarWithCard(title: String, onBackClick: (() -> Unit)? = null) {
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 1.dp
-        ),// shadow effect
+            .fillMaxWidth()
+            .background(Color.White)
+            .statusBarsPadding(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.background,
+            containerColor = Color.White,
         )
     ) {
         CenterAlignedTopAppBar(
             modifier = Modifier
-                .padding(top = 0.dp), // যদি zero top চান
+                .fillMaxWidth()
+                .background(Color.White)
+                .height(45.dp),
             title = {
                 Text(text = title,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    modifier = Modifier
+                        .padding(top = 7.dp)
                 ) },
             navigationIcon = {
                 if (onBackClick != null) {
                     IconButton(onClick = onBackClick) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.arrow_blue),
-                            contentDescription = "Back",
-                            tint = Color.Unspecified
-                        )
+
+                            Icon(
+                                modifier = Modifier
+                                    .size(45.dp)
+                                    .background(Color.White),
+
+                                painter = painterResource(id = R.drawable.arrow_blue),
+                                contentDescription = "Back",
+                                tint = Color.Unspecified
+                            )
                     }
                 }
             },colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                containerColor = MaterialTheme.colorScheme.background,
+                containerColor = Color.White,
                 titleContentColor = MaterialTheme.colorScheme.onBackground,
                 navigationIconContentColor = MaterialTheme.colorScheme.onBackground )
         )
     }
-
 }
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewCustomAppBar() {
+    CustomAppBarWithCard(title = "Profile", onBackClick = {  })
+}
+
+

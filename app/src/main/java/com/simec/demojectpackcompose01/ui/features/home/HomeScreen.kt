@@ -53,10 +53,6 @@ import com.simec.demojectpackcompose01.ui.features.home.eventList.EachEventCard
 
 @Composable
 fun HomeScreen(navController: NavHostController? = null){
-
-    var searchText by remember { mutableStateOf("") }
-
-
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Color.White)
@@ -104,22 +100,34 @@ fun HomeScreen(navController: NavHostController? = null){
                     .clickable {
                     navController?.navigate("add")
                 }
-                )
+            )
         }
 
-          OutlinedTextField(
-              value = searchText,
-              onValueChange = { searchText = it },
-              placeholder = { Text("Search") },
-              modifier = Modifier
-                  .fillMaxWidth()
-                  .padding(top = 20.dp, start = 16.dp, end = 16.dp)
-          )
+
+          Card(modifier = Modifier
+              .fillMaxWidth()
+              .padding(vertical = 16.dp, horizontal = 20.dp)
+              .background(Color.Blue),
+              shape = RoundedCornerShape(5.dp),
+              border = BorderStroke(1.dp, Color.Blue),
+              elevation = CardDefaults.cardElevation(2.dp)
+          ){
+              
+              Text(
+                  text = "This Month’s Summary",
+                  fontSize = 16.sp,
+                  fontWeight = FontWeight.Medium,
+                  color = Color.White,
+              )
+
+
+          }
+
+
 
 
           Column(
               modifier = Modifier
-                  .padding(top = 10.dp)
                   .verticalScroll(state = rememberScrollState())
 
           ){
@@ -159,7 +167,7 @@ fun HomeScreen(navController: NavHostController? = null){
                   ) {
                       LazyColumn(
                           modifier = Modifier
-                              .height(330.dp)
+                              .height(360.dp)
 
                       ) {
 
@@ -192,7 +200,7 @@ fun HomeScreen(navController: NavHostController? = null){
                       Card(
                           modifier = Modifier
                               .weight(1f)
-                              .height(100.dp),
+                              .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
                           border = BorderStroke(1.dp, Color.Blue),
@@ -210,21 +218,22 @@ fun HomeScreen(navController: NavHostController? = null){
 
                           ){
                               Image(
-                                  painter = painterResource(R.drawable.bibimbap),
+                                  painter = painterResource(R.drawable.dish),
                                   contentDescription = "Food Pic",
                                   modifier = Modifier
-                                      .size(40.dp)
+                                      .size(50.dp)
                                       .clip(CircleShape)
+                                      .align(Alignment.CenterHorizontally),
 
                               )
-                              Spacer(modifier = Modifier.width(20.dp))
+                              Spacer(modifier = Modifier.width(16.dp))
                               Text(
                                   text = "Food",
                                   fontSize = 16.sp,
                                   fontWeight = FontWeight.Medium,
                                   color = Color.Black,
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
+                                      .padding(top = 3.dp)
                               )
                           }
                       }
@@ -232,7 +241,7 @@ fun HomeScreen(navController: NavHostController? = null){
                       Card(
                           modifier = Modifier
                               .weight(1f)
-                              .height(100.dp),
+                              .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
                           border = BorderStroke(1.dp, Color.Blue),
@@ -250,28 +259,25 @@ fun HomeScreen(navController: NavHostController? = null){
                           ){
 
                               Image(
-                                  painter = painterResource(R.drawable.bibimbap),
+                                  painter = painterResource(R.drawable.coordination),
                                   contentDescription = "Man Pic",
                                   modifier = Modifier
-                                      .size(40.dp)
+                                      .size(50.dp)
                                       .clip(CircleShape)
+                                      .align(Alignment.CenterHorizontally)
                               )
                               Spacer(modifier = Modifier.width(20.dp))
 
 
 
                               Text(
-                                  text = "Man Management",
+                                  text = "Staff Coordination",
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
+                                      .padding(top = 3.dp)
 
                               )
-
-
-
                           }
-
                       }
                   }
               }
@@ -290,7 +296,7 @@ fun HomeScreen(navController: NavHostController? = null){
                       Card(
                           modifier = Modifier
                               .weight(1f)
-                              .height(100.dp),
+                              .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
                           border = BorderStroke(1.dp, Color.Blue),
@@ -308,11 +314,12 @@ fun HomeScreen(navController: NavHostController? = null){
 
                           ){
                               Image(
-                                  painter = painterResource(R.drawable.bibimbap),
+                                  painter = painterResource(R.drawable.christmas_lights),
                                   contentDescription = "Food Pic",
                                   modifier = Modifier
-                                      .size(40.dp)
+                                      .size(50.dp)
                                       .clip(CircleShape)
+                                      .align(Alignment.CenterHorizontally)
 
                               )
                               Spacer(modifier = Modifier.width(20.dp))
@@ -322,7 +329,7 @@ fun HomeScreen(navController: NavHostController? = null){
                                   fontWeight = FontWeight.Medium,
                                   color = Color.Black,
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
+                                      .padding(top = 3.dp)
                               )
                           }
                       }
@@ -330,7 +337,7 @@ fun HomeScreen(navController: NavHostController? = null){
                       Card(
                           modifier = Modifier
                               .weight(1f)
-                              .height(100.dp),
+                              .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
                           border = BorderStroke(1.dp, Color.Blue),
@@ -348,10 +355,10 @@ fun HomeScreen(navController: NavHostController? = null){
                           ){
 
                               Image(
-                                  painter = painterResource(R.drawable.bibimbap),
+                                  painter = painterResource(R.drawable.budget),
                                   contentDescription = "Man Pic",
                                   modifier = Modifier
-                                      .size(40.dp)
+                                      .size(50.dp)
                                       .clip(CircleShape)
                               )
                               Spacer(modifier = Modifier.width(20.dp))
@@ -362,12 +369,11 @@ fun HomeScreen(navController: NavHostController? = null){
                                   text = "Budget",
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
+                                      .padding(top = 5.dp),
+                                  fontSize = 16.sp,
+                                  color = Color.Black
 
                               )
-
-
-
                           }
 
                       }
@@ -388,7 +394,7 @@ fun HomeScreen(navController: NavHostController? = null){
                       Card(
                           modifier = Modifier
                               .weight(1f)
-                              .height(100.dp),
+                              .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
                           border = BorderStroke(1.dp, Color.Blue),
@@ -406,10 +412,10 @@ fun HomeScreen(navController: NavHostController? = null){
 
                           ){
                               Image(
-                                  painter = painterResource(R.drawable.bibimbap),
+                                  painter = painterResource(R.drawable.task_list),
                                   contentDescription = "Food Pic",
                                   modifier = Modifier
-                                      .size(40.dp)
+                                      .size(50.dp)
                                       .clip(CircleShape)
 
                               )
@@ -420,7 +426,7 @@ fun HomeScreen(navController: NavHostController? = null){
                                   fontWeight = FontWeight.Medium,
                                   color = Color.Black,
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
+                                      .padding(top = 3.dp)
                               )
                           }
                       }
@@ -428,7 +434,7 @@ fun HomeScreen(navController: NavHostController? = null){
                       Card(
                           modifier = Modifier
                               .weight(1f)
-                              .height(100.dp),
+                              .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
                           border = BorderStroke(1.dp, Color.Blue),
@@ -446,10 +452,10 @@ fun HomeScreen(navController: NavHostController? = null){
                           ){
 
                               Image(
-                                  painter = painterResource(R.drawable.bibimbap),
+                                  painter = painterResource(R.drawable.notes),
                                   contentDescription = "Man Pic",
                                   modifier = Modifier
-                                      .size(40.dp)
+                                      .size(50.dp)
                                       .clip(CircleShape)
                               )
                               Spacer(modifier = Modifier.width(20.dp))
@@ -460,7 +466,7 @@ fun HomeScreen(navController: NavHostController? = null){
                                   text = "Notes",
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
+                                      .padding(top = 3.dp)
 
                               )
                           }

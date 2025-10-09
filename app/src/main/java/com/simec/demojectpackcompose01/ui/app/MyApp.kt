@@ -26,7 +26,7 @@ fun MyApp() {
 
     Scaffold(
         bottomBar = {
-            if (currentRoute == "home" || currentRoute == "calendar" || currentRoute == "notifications" || currentRoute == "settings") {
+            if (currentRoute == "home" || currentRoute == "calendar" || currentRoute == "events" || currentRoute == "settings") {
                 BottomNavigationBar(navController = navController)
             }
         }

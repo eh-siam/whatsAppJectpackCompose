@@ -1,11 +1,12 @@
 package com.simec.demojectpackcompose01.ui.components
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.Call
+import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Settings
@@ -18,9 +19,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
+import androidx.compose.material.icons.outlined.Event
 
 
 /**
@@ -50,15 +50,15 @@ fun BottomNavigationBar(navController: NavController) {
         BottomNavigationItem(
             title = "Calendar",
             route = "calendar",
-            selectedIcon = Icons.Filled.Notifications,
-            unselectedIcon =Icons.Outlined.Notifications,
+            selectedIcon = Icons.Filled.CalendarMonth,
+            unselectedIcon =Icons.Outlined.CalendarMonth,
             hasNews = false
         ),
         BottomNavigationItem(
             title = "Events",
             route = "events",
-            selectedIcon = Icons.Filled.Notifications,
-            unselectedIcon = Icons.Outlined.Notifications,
+            selectedIcon = Icons.Filled.Event,
+            unselectedIcon = Icons.Outlined.Event,
             hasNews = false,
             badgeCount = 23
         ),

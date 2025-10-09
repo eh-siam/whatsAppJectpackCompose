@@ -19,6 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
+
+
 /**
  * Created by Emdadul Haque Siam on 28,September,2025
  * Copyright (c): SIMEC System Ltd.
@@ -30,7 +33,7 @@ fun EachEventCard(count : Int){
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .padding(vertical = 7.dp),
+            .padding(vertical = 10.dp),
         shape = RoundedCornerShape(10.dp),
         elevation = CardDefaults.cardElevation(2.dp),
         colors = CardDefaults.cardColors(

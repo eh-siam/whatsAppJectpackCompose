@@ -1,14 +1,20 @@
 package com.simec.demojectpackcompose01.ui.features.home.profile
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.simec.demojectpackcompose01.ui.components.CustomAppBarWithCard
+import com.simec.demojectpackcompose01.ui.features.home.HomeScreen
 
 /**
  * Created by Emdadul Haque Siam on 24,September,2025
@@ -17,23 +23,33 @@ import com.simec.demojectpackcompose01.ui.components.CustomAppBarWithCard
 
 @Composable
 fun ProfileScreen(navController: NavHostController){
-
-    Column(
-        modifier = Modifier
+    Scaffold(
+        topBar = { CustomAppBarWithCard(title = "Profile", onBackClick = { navController.popBackStack() }) }
+    ) { innerPadding ->
+        Column(modifier = Modifier
             .fillMaxSize()
-    ){
-        CustomAppBarWithCard(
-            title= "Profile",
-            onBackClick = {navController.popBackStack()}
-        )
+            .padding(innerPadding)
+            .background(Color.White)) {
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .padding(horizontal = 20.dp, vertical = 20.dp)
-        ){
-            Text(text = "Profile Screen")
+
+
+            Text(
+                text = "Profile Screen",
+                modifier = Modifier
+                    .padding(16.dp)
+
+            )
+
+
+
+
         }
     }
+
+
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun ProfileScreen() {
 }
