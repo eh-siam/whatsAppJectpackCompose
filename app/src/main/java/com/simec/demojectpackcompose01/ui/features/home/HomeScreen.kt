@@ -88,7 +88,7 @@ fun HomeScreen(navController: NavHostController? = null){
                 text = "Add(+)",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Blue,
+                color = colorResource(id = R.color.purple_700),
                 modifier = Modifier
                     .padding(start = 10.dp)
                     .align(Alignment.CenterEnd)
@@ -143,7 +143,7 @@ fun HomeScreen(navController: NavHostController? = null){
                           text = "Upcoming Event",
                           fontSize = 16.sp,
                           fontWeight = FontWeight.Medium,
-                          color = Color.Black,
+                          color = colorResource(id = R.color.title),
                           modifier = Modifier
                               .align(Alignment.CenterStart),
                       )
@@ -176,7 +176,7 @@ fun HomeScreen(navController: NavHostController? = null){
                   text = "Event Categories",
                   fontSize = 16.sp,
                   fontWeight = FontWeight.Medium,
-                  color = Color.Black,
+                  color = colorResource(id = R.color.title),
                   modifier = Modifier
                       .padding(horizontal = 16.dp, vertical = 5.dp)
               )
