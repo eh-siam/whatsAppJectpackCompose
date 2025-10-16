@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -156,7 +157,7 @@ fun HomeScreen(navController: NavHostController? = null){
                           text = "View All",
                           fontSize = 16.sp,
                           fontWeight = FontWeight.Bold,
-                          color = Color.Blue,
+                          color = colorResource(id = R.color.purple_700),
                           modifier = Modifier
                               .align(Alignment.CenterEnd),
                       )
