@@ -31,18 +31,12 @@ fun ProfileScreen(navController: NavHostController){
             .padding(innerPadding)
             .background(Color.White)) {
 
-
-
             Text(
                 text = "Profile Screen",
                 modifier = Modifier
                     .padding(16.dp)
 
             )
-
-
-
-
         }
     }
 

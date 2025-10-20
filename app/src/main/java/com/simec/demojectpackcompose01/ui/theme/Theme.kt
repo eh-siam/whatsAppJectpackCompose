@@ -1,7 +1,10 @@
 package com.simec.demojectpackcompose01.ui.theme
 
-import android.app.Activity
 import android.os.Build
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import com.simec.demojectpackcompose01.R
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -35,6 +38,18 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFF1C1B1F),
     */
 )
+
+val NunitoSemiBold = FontFamily(
+    Font(R.font.nunito_semibold, FontWeight.Bold),
+)
+val NunitoMedium = FontFamily(
+    Font(R.font.nunito_medium, FontWeight.Bold),
+)
+val NunitoRegular= FontFamily(
+    Font(R.font.nunito_regular, FontWeight.Normal),
+)
+
+
 
 @Composable
 fun DemoJectpackCompose01Theme(

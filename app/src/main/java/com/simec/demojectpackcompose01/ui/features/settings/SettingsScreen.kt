@@ -41,7 +41,6 @@ fun SettingsScreen(navController: NavHostController) {
 
     Column(
         modifier = Modifier
-            .padding(10.dp)
             .fillMaxSize()
             .background(Color.White)
     ) {

@@ -14,10 +14,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.overscroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.magnifier
+import androidx.compose.foundation.overscroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -40,6 +44,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.simec.demojectpackcompose01.R
 import com.simec.demojectpackcompose01.ui.features.home.eventList.EachEventCard
+import com.simec.demojectpackcompose01.ui.theme.NunitoMedium
+import com.simec.demojectpackcompose01.ui.theme.NunitoSemiBold
 
 /**
  * Created by Emdadul Haque Siam on 17,September,2025
@@ -88,7 +94,7 @@ fun HomeScreen(navController: NavHostController? = null){
                 text = "Add(+)",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.purple_700),
+                color = colorResource(id = R.color.CardTextColor),
                 modifier = Modifier
                     .padding(start = 10.dp)
                     .align(Alignment.CenterEnd)
@@ -98,28 +104,180 @@ fun HomeScreen(navController: NavHostController? = null){
             )
         }
 
-
-          Card(modifier = Modifier
-              .fillMaxWidth()
-              .padding(vertical = 16.dp, horizontal = 20.dp)
-              .background(Color.Blue),
-              shape = RoundedCornerShape(5.dp),
-              border = BorderStroke(1.dp, Color.Blue),
-              elevation = CardDefaults.cardElevation(2.dp)
-          ){
-              
-              Text(
-                  text = "This Month’s Summary",
-                  fontSize = 16.sp,
-                  fontWeight = FontWeight.Medium,
-                  color = Color.White,
+          Spacer(modifier = Modifier.padding(start = 10.dp))
+          Text(
+              text = "Monthly Event Overview",
+              fontSize = 16.sp,
+              fontWeight = FontWeight.Medium,
+              color = colorResource(id = R.color.title),
+              modifier = Modifier
+                  .padding(top = 28.dp,start = 16.dp)
               )
 
 
+          Card(modifier = Modifier
+              .fillMaxWidth()
+              .padding(vertical = 10.dp, horizontal = 16.dp),
+              shape = RoundedCornerShape(10.dp),
+              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+              elevation = CardDefaults.cardElevation(2.dp)
+          ){
+              Box {
+
+                  Image(
+                      painter = painterResource(id = R.drawable.bg_background_rectangle),
+                      contentDescription = "Card design",
+                      contentScale = ContentScale.Crop,
+                      modifier = Modifier
+                          .fillMaxWidth())
+
+                  Column {
+
+                      Column (
+                          modifier = Modifier
+                              .fillMaxWidth()
+                              .padding(horizontal = 20.dp, vertical = 5.dp)
+                      ){
+                          Row(
+                              modifier = Modifier
+                                  .padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                              horizontalArrangement = Arrangement.spacedBy(75.dp)
+                          ) {
+                              Column {
+
+                                  Text(
+                                      text = "Upcoming Events",
+                                      fontSize = 13.sp,
+                                      fontFamily = NunitoMedium,
+                                      fontWeight = FontWeight.Medium,
+                                      color = colorResource(id = R.color.CardTextColor)
+
+                                  )
+                                  Spacer(modifier = Modifier
+                                      .padding(3.dp))
+                                  Text(
+                                      text = "24",
+                                      fontSize = 16.sp,
+                                      fontWeight = FontWeight.Bold,
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      modifier = Modifier
+                                          .align(Alignment.CenterHorizontally)
+                                  )
+
+                              }
+                              Column{
+                                  Text(
+                                      text = "Ongoing Events",
+                                      fontSize = 13.sp,
+                                      fontFamily = NunitoMedium,
+                                      fontWeight = FontWeight.Medium,
+                                      color = colorResource(id = R.color.CardTextColor)
+
+                                  )
+                                  Spacer(modifier = Modifier
+                                      .padding(3.dp))
+                                  Text(
+                                      text = "12",
+                                      fontSize = 16.sp,
+                                      fontWeight = FontWeight.Bold,
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      modifier = Modifier
+                                          .align(Alignment.CenterHorizontally)
+                                  )
+
+                              }
+                          }
+                      }
+
+                      Column (
+                          modifier = Modifier
+                              .fillMaxWidth()
+                              .padding(horizontal = 20.dp, vertical = 5.dp)
+                      ){
+                          Row(
+                              modifier = Modifier
+                                  .padding(top = 5.dp, start = 16.dp, end = 16.dp),
+                              horizontalArrangement = Arrangement.spacedBy(70.dp)
+                          ) {
+                              Column {
+
+                                  Text(
+                                      text = "Completed Events ",
+                                      fontSize = 13.sp,
+                                      fontFamily = NunitoMedium,
+                                      fontWeight = FontWeight.Medium,
+                                      color = colorResource(id = R.color.CardTextColor)
+
+                                  )
+                                  Spacer(modifier = Modifier
+                                      .padding(3.dp))
+                                  Text(
+                                      text = "06",
+                                      fontSize = 16.sp,
+                                      fontWeight = FontWeight.Bold,
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      modifier = Modifier
+                                          .align(Alignment.CenterHorizontally)
+                                  )
+
+                              }
+                              Column{
+                                  Text(
+                                      text = "Rejected Events",
+                                      fontSize = 13.sp,
+                                      fontFamily = NunitoMedium,
+                                      fontWeight = FontWeight.Medium,
+                                      color = colorResource(id = R.color.CardTextColor)
+
+                                  )
+                                  Spacer(modifier = Modifier
+                                      .padding(3.dp))
+                                  Text(
+                                      text = "02",
+                                      fontSize = 16.sp,
+                                      fontWeight = FontWeight.Bold,
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      modifier = Modifier
+                                          .align(Alignment.CenterHorizontally)
+                                  )
+
+                              }
+                          }
+                      }
+
+                      Spacer(modifier = Modifier
+                          .padding(top = 18.dp))
+
+                      Row(
+                          modifier = Modifier
+                              .fillMaxWidth()
+                              .background(colorResource(R.color.MainCardColor))
+                              .padding(top = 12.dp)
+                      ){
+                          Text(
+                              text = "Total Events :",
+                              fontSize = 13.sp,
+                              modifier = Modifier
+                                  .padding(start = 120.dp, bottom = 10.dp),
+                              fontFamily = NunitoMedium,
+                              fontWeight = FontWeight.Medium,
+                              color = colorResource(id = R.color.myCustomColor)
+
+                          )
+                          Spacer(modifier = Modifier
+                              .padding(start = 16.dp))
+
+                          Text(
+                              text = "02",
+                              fontSize = 16.sp,
+                              fontWeight = FontWeight.Bold,
+                              color = colorResource(id = R.color.myCustomColor)
+
+                          )
+                      }
+                  }
+              }
           }
-
-
-
 
           Column(
               modifier = Modifier
@@ -130,12 +288,11 @@ fun HomeScreen(navController: NavHostController? = null){
               Column (
                   modifier = Modifier
                       .fillMaxWidth()
-                      .padding(horizontal = 16.dp, vertical = 5.dp)
+                      .padding(horizontal = 16.dp, vertical = 7.dp)
               ){
                   Box(
                       modifier = Modifier
-                          .fillMaxWidth()
-                          .padding(top = 10.dp),
+                          .fillMaxWidth(),
                       contentAlignment = Alignment.Center
 
                   ) {
@@ -151,18 +308,19 @@ fun HomeScreen(navController: NavHostController? = null){
                           text = "View All",
                           fontSize = 16.sp,
                           fontWeight = FontWeight.Bold,
-                          color = colorResource(id = R.color.purple_700),
+                          color = colorResource(id = R.color.CardTextColor),
                           modifier = Modifier
                               .align(Alignment.CenterEnd),
                       )
                   }
                   Column(
                       modifier = Modifier
-                          .padding( vertical = 10.dp)
+                          .padding( vertical = 5.dp)
                   ) {
                       LazyColumn(
                           modifier = Modifier
-                              .height(360.dp)
+                              .height(350.dp),
+                          userScrollEnabled = false //scroll off
 
                       ) {
 
@@ -198,7 +356,7 @@ fun HomeScreen(navController: NavHostController? = null){
                               .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, Color.Blue),
+                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
                           colors = CardDefaults.cardColors(
                               containerColor = Color.White
                           )
@@ -224,9 +382,10 @@ fun HomeScreen(navController: NavHostController? = null){
                               Spacer(modifier = Modifier.width(16.dp))
                               Text(
                                   text = "Food",
-                                  fontSize = 16.sp,
+                                  fontSize = 15.sp,
+                                  fontFamily = NunitoSemiBold,
                                   fontWeight = FontWeight.Medium,
-                                  color = Color.Black,
+                                  color = colorResource(id = R.color.CardTextColor),
                                   modifier = Modifier
                                       .padding(top = 3.dp)
                               )
@@ -239,7 +398,7 @@ fun HomeScreen(navController: NavHostController? = null){
                               .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, Color.Blue),
+                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
                           colors = CardDefaults.cardColors(
                               containerColor = Color.White
                           )
@@ -267,9 +426,12 @@ fun HomeScreen(navController: NavHostController? = null){
 
                               Text(
                                   text = "Staff Coordination",
+                                  color = colorResource(id = R.color.CardTextColor),
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
-                                      .padding(top = 3.dp)
+                                      .padding(top = 3.dp),
+                                  fontFamily = NunitoSemiBold,
+                                  fontSize = 15.sp
 
                               )
                           }
@@ -294,7 +456,7 @@ fun HomeScreen(navController: NavHostController? = null){
                               .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, Color.Blue),
+                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
                           colors = CardDefaults.cardColors(
                               containerColor = Color.White
                           )
@@ -320,9 +482,10 @@ fun HomeScreen(navController: NavHostController? = null){
                               Spacer(modifier = Modifier.width(20.dp))
                               Text(
                                   text = "Decoration",
-                                  fontSize = 16.sp,
+                                  fontSize = 15.sp,
+                                  fontFamily = NunitoSemiBold,
                                   fontWeight = FontWeight.Medium,
-                                  color = Color.Black,
+                                  color = colorResource(id = R.color.CardTextColor),
                                   modifier = Modifier
                                       .padding(top = 3.dp)
                               )
@@ -335,7 +498,7 @@ fun HomeScreen(navController: NavHostController? = null){
                               .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, Color.Blue),
+                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
                           colors = CardDefaults.cardColors(
                               containerColor = Color.White
                           )
@@ -365,8 +528,9 @@ fun HomeScreen(navController: NavHostController? = null){
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
                                       .padding(top = 5.dp),
-                                  fontSize = 16.sp,
-                                  color = Color.Black
+                                  fontSize = 15.sp,
+                                  fontFamily = NunitoSemiBold,
+                                  color = colorResource(id = R.color.CardTextColor)
 
                               )
                           }
@@ -392,7 +556,7 @@ fun HomeScreen(navController: NavHostController? = null){
                               .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, Color.Blue),
+                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
                           colors = CardDefaults.cardColors(
                               containerColor = Color.White
                           )
@@ -417,9 +581,10 @@ fun HomeScreen(navController: NavHostController? = null){
                               Spacer(modifier = Modifier.width(20.dp))
                               Text(
                                   text = "Task List",
-                                  fontSize = 16.sp,
+                                  fontSize = 15.sp,
+                                  fontFamily = NunitoSemiBold,
                                   fontWeight = FontWeight.Medium,
-                                  color = Color.Black,
+                                  color = colorResource(id = R.color.CardTextColor),
                                   modifier = Modifier
                                       .padding(top = 3.dp)
                               )
@@ -432,7 +597,7 @@ fun HomeScreen(navController: NavHostController? = null){
                               .height(120.dp),
                           elevation = CardDefaults.cardElevation(2.dp),
                           shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, Color.Blue),
+                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
                           colors = CardDefaults.cardColors(
                               containerColor = Color.White
                           )
@@ -455,13 +620,14 @@ fun HomeScreen(navController: NavHostController? = null){
                               )
                               Spacer(modifier = Modifier.width(20.dp))
 
-
-
                               Text(
                                   text = "Notes",
+                                  fontSize = 15.sp,
+                                  fontFamily = NunitoSemiBold,
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
-                                      .padding(top = 3.dp)
+                                      .padding(top = 3.dp),
+                                  color = colorResource(id = R.color.CardTextColor)
 
                               )
                           }

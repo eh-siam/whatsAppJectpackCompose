@@ -10,5 +10,10 @@
     <color name="level">#757575</color>
     <color name="result">#212121</color>
     <color name="title">#263238</color>
+    <color name="myCustomColor">#ebf1fd</color>
+    <color name="CustomColor">#1976D2</color>
+    <color name="MainCardColor">#0f366d</color>
+    <color name="CardTextColor">#0f366d</color>
+    <color name="Star">#DE0000</color>
 
 </resources>

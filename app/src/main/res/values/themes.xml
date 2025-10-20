@@ -2,4 +2,5 @@
 <resources>
 
     <style name="Theme.DemoJectpackCompose01" parent="android:Theme.Material.Light.NoActionBar" />
+
 </resources>

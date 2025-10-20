@@ -1,11 +1,19 @@
 package com.simec.demojectpackcompose01.ui.features.home.eventList
 
+import androidx.compose.foundation.Image
+import com.simec.demojectpackcompose01.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.res.colorResource
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -13,13 +21,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-
+import com.simec.demojectpackcompose01.ui.theme.NunitoMedium
+import com.simec.demojectpackcompose01.ui.theme.NunitoRegular
+import com.simec.demojectpackcompose01.ui.theme.NunitoSemiBold
 
 
 /**
@@ -33,7 +45,7 @@ fun EachEventCard(count : Int){
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .padding(vertical = 10.dp),
+            .padding(vertical = 10.dp, horizontal = 3.dp),
         shape = RoundedCornerShape(10.dp),
         elevation = CardDefaults.cardElevation(2.dp),
         colors = CardDefaults.cardColors(
@@ -41,109 +53,161 @@ fun EachEventCard(count : Int){
         )
     ) {
 
-        Column(
-            modifier = Modifier
-                .padding(10.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
+        Row {
 
-        ) {
 
-            Row(
+
+            Card(
                 modifier = Modifier
-                    .padding(5.dp),
-                verticalAlignment = Alignment.CenterVertically
+                    .size(height = 150.dp, width = 150.dp)
+                    .padding(12.dp),
+                shape = RoundedCornerShape(10.dp)
             ) {
-                Text(
-                    text = "Type :",
+                Box(
                     modifier = Modifier
-                        .padding(end = 5.dp)
-                )
-                Text(
-                    text = "Social Event",
-                    fontWeight = Bold,
-                    modifier = Modifier
-                    // you can align it to the end if you want
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .padding(5.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Persons :",
-                    modifier = Modifier
-                        .padding(end = 5.dp)
-                )
-                Text(
-                    text = "120",
-                    fontWeight = Bold,
-                    modifier = Modifier
-                    // you can align it to the end if you want
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .padding(5.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Date :",
-                    modifier = Modifier
-                        .padding(end = 5.dp)
-
-                )
-                Text(
-                    text = "09-10-25",
-                    fontWeight= Bold,
-                    fontSize = 14.sp,
-
-                )
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img),
+                        contentDescription = "Social Image",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(1f)
+                            .clip(RoundedCornerShape(8.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+                }
             }
 
-            Row  (
+            Column(
                 modifier = Modifier
-                    .padding(5.dp)
-                    .align(Alignment.Start)
-            ) {
-                Text(
-                    text = "Time :",
+                    .padding(start = 5.dp, top = 12.dp),
+                verticalArrangement = Arrangement.SpaceBetween,
+
+                ) {
+
+                Row(
                     modifier = Modifier
-                        .padding(end = 5.dp)
-                )
-                Text(
-                    text = "02:30 PM",
-                    fontWeight = Bold,
+                        .padding(3.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Type :",
+                        fontSize = 12.sp,
+                        color = colorResource(id = R.color.level),
+                        fontFamily = NunitoMedium,
+                        modifier = Modifier
+                            .padding(end = 5.dp)
+
+                    )
+                    Text(
+                        text = "Social Event",
+                        fontSize = 14.sp,
+                        color = colorResource(id = R.color.result),
+                        fontFamily =  NunitoSemiBold,
+                        fontWeight = Bold,
+                        modifier = Modifier
+                        // you can align it to the end if you want
+                    )
+                }
+                Row(
                     modifier = Modifier
-                    // you can align it to the end if you want
-                )
+                        .padding(1.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Persons :",
+                        fontSize = 12.sp,
+                        fontFamily =  NunitoMedium,
+                        color = colorResource(id = R.color.level),
+                        modifier = Modifier
+                            .padding(end = 5.dp, start = 2.dp)
+                    )
+                    Text(
+                        text = "120",
+                        fontSize = 14.sp,
+                        fontWeight = Bold,
+                        fontFamily = NunitoSemiBold,
+                        color = colorResource(id = R.color.result),
+                        modifier = Modifier
+                        // you can align it to the end if you want
+                    )
+                }
+                Row(
+                    modifier = Modifier
+                        .padding(4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text ="Date :",
+                        fontSize = 12.sp,
+                        fontFamily =  NunitoMedium,
+                        color = colorResource(id = R.color.level),
+                        modifier = Modifier
+                            .padding(end = 5.dp)
+
+                    )
+                    Text(
+                        text = "09-10-25",
+                        fontWeight= Bold,
+                        fontSize = 14.sp,
+                        fontFamily =  NunitoSemiBold,
+                        color = colorResource(id = R.color.result),
+
+                        )
+                }
+
+                Row  (
+                    modifier = Modifier
+                        .padding(3.dp)
+                        .align(Alignment.Start)
+                ) {
+                    Text(
+                        text = "Time :",
+                        fontFamily =  NunitoMedium,
+                        fontSize = 12.sp,
+                        color = colorResource(id = R.color.level),
+                        modifier = Modifier
+                            .padding(end = 5.dp)
+                    )
+                    Text(
+                        text = "02:30 PM",
+                        fontWeight = Bold,
+                        fontSize = 14.sp,
+                        fontFamily =  NunitoSemiBold,
+                        color = colorResource(id = R.color.result),
+                        modifier = Modifier
+                        // you can align it to the end if you want
+                    )
+                }
+
+
+                Row(
+                    modifier = Modifier
+                        .padding(1.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Location :",
+                        fontSize = 12.sp,
+                        color = colorResource(id = R.color.level),
+                        fontFamily =  NunitoMedium,
+                        modifier = Modifier
+                            .padding(start = 2.dp ,end = 5.dp)
+                    )
+                    Text(
+                        text = "127,Sec 12,Uttara",
+                        modifier = Modifier,
+                        fontWeight = Bold,
+                        fontSize = 14.sp,
+                        fontFamily =  NunitoSemiBold,
+                        color = colorResource(id = R.color.result),
+                        // you can align it to the end if you want
+                    )
+                }
             }
-
-
-            Row(
-                modifier = Modifier
-                    .padding(5.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Location :",
-                    modifier = Modifier
-                        .padding(end = 5.dp)
-                )
-                Text(
-                    text = "plot# 02,Sector 12, Uttara",
-                    modifier = Modifier,
-                    fontWeight = Bold
-                    // you can align it to the end if you want
-                )
-            }
-
-
-
-
         }
-
-
     }
 }
 
