@@ -21,7 +21,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-           MyApp()
+            DemoJectpackCompose01Theme {
+                MyApp() // ✅ Entry point
+            }
         }
     }
 }

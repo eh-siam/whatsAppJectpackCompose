@@ -47,7 +47,7 @@ fun SettingsScreen(navController: NavHostController) {
         Box(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(top = 24.dp)
+                .padding(top = 16.dp)
         ) {
 
             Text(
@@ -299,7 +299,7 @@ fun SettingsScreen(navController: NavHostController) {
                 ) {
 
                     Text(
-                        text = "Organizer Tools",
+                        text = "Event Analytics",
                         fontSize = 16.sp,
                         color = Color.Black,
                         modifier = Modifier

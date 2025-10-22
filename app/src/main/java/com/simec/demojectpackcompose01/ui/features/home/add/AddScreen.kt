@@ -2,9 +2,11 @@ package com.simec.demojectpackcompose01.ui.features.home.add
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -21,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.simec.demojectpackcompose01.R
+import com.simec.demojectpackcompose01.data.enumData.EventType
 import com.simec.demojectpackcompose01.ui.components.CustomAppBarWithCard
 import com.simec.demojectpackcompose01.ui.theme.NunitoMedium
 
@@ -28,7 +31,7 @@ import com.simec.demojectpackcompose01.ui.theme.NunitoMedium
 @Composable
 fun AddScreen(navController: NavHostController? = null) {
 
-    val items = listOf("Conference", "Workshop", "Webinar", "Meetup")
+    val items = EventType.getAllTypes()
 
     var expanded by remember { mutableStateOf(false) }
     var selectedEventType by remember { mutableStateOf("") }
@@ -137,22 +140,23 @@ fun AddScreen(navController: NavHostController? = null) {
                 ) {
                     TextField(
                         value = selectedEventType,
-                        onValueChange = { },
+                        onValueChange = {},
                         readOnly = true,
                         placeholder = {
-                            if (selectedEventType.isEmpty()) Text("Select Event Type", color = Color.Gray)
+                            if (selectedEventType.isEmpty())
+                                Text("Select Event Type", color = Color.Gray)
                         },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                         modifier = Modifier
+                            .menuAnchor()
                             .fillMaxWidth()
                             .clip(RoundedCornerShape(8.dp))
-                            .background(Color.White) // background separate, clip দিয়ে
+                            .background(Color.White)
                             .border(
                                 width = 1.dp,
                                 color = colorResource(id = R.color.MainCardColor),
                                 shape = RoundedCornerShape(8.dp)
-                            )
-                            .clickable { expanded = true }, // এখানে click handle
+                            ),
                         colors = ExposedDropdownMenuDefaults.textFieldColors(
                             focusedContainerColor = Color.White,
                             unfocusedContainerColor = Color.White,
@@ -161,21 +165,29 @@ fun AddScreen(navController: NavHostController? = null) {
                             unfocusedIndicatorColor = Color.Transparent
                         )
                     )
-                    ExposedDropdownMenu(
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false }
+                    // ✅ Smooth Animated Dropdown
+                    AnimatedVisibility(
+                        visible = expanded,
+                        enter = expandVertically() + fadeIn(),
+                        exit = shrinkVertically() + fadeOut()
                     ) {
-                        items.forEach { item ->
-                            DropdownMenuItem(
-                                text = { Text(item) },
-                                onClick = {
-                                    selectedEventType = item
-                                    expanded = false
-                                }
-                            )
+                        ExposedDropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false }
+                        ) {
+                            items.forEach { item ->
+                                DropdownMenuItem(
+                                    text = { Text(item) },
+                                    onClick = {
+                                        selectedEventType = item
+                                        expanded = false
+                                    }
+                                )
+                            }
                         }
                     }
                 }
+
 
 
                 Spacer(modifier = Modifier.height(12.dp))

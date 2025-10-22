@@ -16,6 +16,7 @@ import com.simec.demojectpackcompose01.ui.features.settings.app_preference.AppPr
 import com.simec.demojectpackcompose01.ui.features.settings.event_preference.EventPreferenceScreen
 import com.simec.demojectpackcompose01.ui.features.settings.organizer_tools.OrganizerToolsScreen
 import com.simec.demojectpackcompose01.ui.features.settings.payment.PaymentScreen
+import com.simec.demojectpackcompose01.ui.features.settings.payment.payout_methods.PayoutMethodsScreen
 import com.simec.demojectpackcompose01.ui.features.settings.rewards_membership.RewardsScreen
 import com.simec.demojectpackcompose01.ui.features.settings.support.SupportScreen
 
@@ -34,7 +35,7 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
 
     ) {
         composable("home") {
-            HomeScreen(navController)
+            HomeScreen(navController = navController)
         }
         composable("calendar") {
             CalenderScreen(navController)
@@ -47,7 +48,7 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
         }
 
         composable("profile") {
-            ProfileScreen(navController = navController)
+            ProfileScreen(navController)
         }
         composable("add") {
             AddScreen(navController = navController)
@@ -74,6 +75,9 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
         }
         composable("app_preference") {
             AppPreferenceScreen(navController = navController)
+        }
+        composable("payout_methods") {
+            PayoutMethodsScreen(navController = navController)
         }
     }
 }

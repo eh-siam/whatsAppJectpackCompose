@@ -24,7 +24,10 @@ import com.simec.demojectpackcompose01.ui.features.home.HomeScreen
 @Composable
 fun ProfileScreen(navController: NavHostController){
     Scaffold(
-        topBar = { CustomAppBarWithCard(title = "Profile", onBackClick = { navController.popBackStack() }) }
+        topBar = { CustomAppBarWithCard(
+            title = "Profile",
+            onBackClick = { navController.popBackStack() }
+        )}
     ) { innerPadding ->
         Column(modifier = Modifier
             .fillMaxSize()
@@ -34,7 +37,7 @@ fun ProfileScreen(navController: NavHostController){
             Text(
                 text = "Profile Screen",
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(10.dp)
 
             )
         }

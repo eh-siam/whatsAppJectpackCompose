@@ -45,12 +45,11 @@ fun CustomAppBarWithCard(title: String, onBackClick: (() -> Unit)? = null) {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
-                .height(45.dp),
+                .height(40.dp),
             title = {
                 Text(text = title,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
-                        .padding(top = 7.dp)
                 ) },
             navigationIcon = {
                 if (onBackClick != null) {
@@ -59,8 +58,8 @@ fun CustomAppBarWithCard(title: String, onBackClick: (() -> Unit)? = null) {
                             Icon(
                                 modifier = Modifier
                                     .size(45.dp)
+                                    .padding(bottom = 3.dp)
                                     .background(Color.White),
-
                                 painter = painterResource(id = R.drawable.arrow_blue),
                                 contentDescription = "Back",
                                 tint = Color.Unspecified

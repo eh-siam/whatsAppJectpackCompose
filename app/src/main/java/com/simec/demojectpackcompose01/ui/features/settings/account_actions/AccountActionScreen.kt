@@ -1,6 +1,9 @@
 package com.simec.demojectpackcompose01.ui.features.settings.account_actions
 
+
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 
 /**
@@ -11,4 +14,11 @@ import androidx.navigation.NavHostController
 @Composable
 fun AccountActionScreen(navController: NavHostController){
 
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AccountActionPreview(){
+    AccountActionScreen(navController = NavHostController(LocalContext.current))
 }

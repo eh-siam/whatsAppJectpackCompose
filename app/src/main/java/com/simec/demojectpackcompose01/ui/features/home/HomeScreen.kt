@@ -14,13 +14,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.overscroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.magnifier
-import androidx.compose.foundation.overscroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -196,7 +193,7 @@ fun HomeScreen(navController: NavHostController? = null){
                       ){
                           Row(
                               modifier = Modifier
-                                  .padding(top = 5.dp, start = 16.dp, end = 16.dp),
+                                  .padding(top = 5.dp, start = 16.dp, end = 10.dp),
                               horizontalArrangement = Arrangement.spacedBy(70.dp)
                           ) {
                               Column {
@@ -265,7 +262,7 @@ fun HomeScreen(navController: NavHostController? = null){
 
                           )
                           Spacer(modifier = Modifier
-                              .padding(start = 16.dp))
+                              .padding(start = 10.dp))
 
                           Text(
                               text = "02",
@@ -315,7 +312,6 @@ fun HomeScreen(navController: NavHostController? = null){
                   }
                   Column(
                       modifier = Modifier
-                          .padding( vertical = 5.dp)
                   ) {
                       LazyColumn(
                           modifier = Modifier
@@ -323,9 +319,8 @@ fun HomeScreen(navController: NavHostController? = null){
                           userScrollEnabled = false //scroll off
 
                       ) {
-
-                          items(2){
-                                  index -> EachEventCard(count = index)
+                          items(2){ index ->
+                              EachEventCard(count = index)
                           }
                       }
                   }
@@ -382,12 +377,12 @@ fun HomeScreen(navController: NavHostController? = null){
                               Spacer(modifier = Modifier.width(16.dp))
                               Text(
                                   text = "Food",
-                                  fontSize = 15.sp,
+                                  fontSize = 14.sp,
                                   fontFamily = NunitoSemiBold,
                                   fontWeight = FontWeight.Medium,
                                   color = colorResource(id = R.color.CardTextColor),
                                   modifier = Modifier
-                                      .padding(top = 3.dp)
+                                      .padding(top = 5.dp)
                               )
                           }
                       }
@@ -429,9 +424,9 @@ fun HomeScreen(navController: NavHostController? = null){
                                   color = colorResource(id = R.color.CardTextColor),
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
-                                      .padding(top = 3.dp),
+                                      .padding(top = 5.dp),
                                   fontFamily = NunitoSemiBold,
-                                  fontSize = 15.sp
+                                  fontSize = 14.sp
 
                               )
                           }
@@ -487,7 +482,7 @@ fun HomeScreen(navController: NavHostController? = null){
                                   fontWeight = FontWeight.Medium,
                                   color = colorResource(id = R.color.CardTextColor),
                                   modifier = Modifier
-                                      .padding(top = 3.dp)
+                                      .padding(top = 5.dp)
                               )
                           }
                       }
@@ -586,7 +581,7 @@ fun HomeScreen(navController: NavHostController? = null){
                                   fontWeight = FontWeight.Medium,
                                   color = colorResource(id = R.color.CardTextColor),
                                   modifier = Modifier
-                                      .padding(top = 3.dp)
+                                      .padding(top = 5.dp)
                               )
                           }
                       }
@@ -626,7 +621,7 @@ fun HomeScreen(navController: NavHostController? = null){
                                   fontFamily = NunitoSemiBold,
                                   fontWeight = FontWeight.Bold,
                                   modifier = Modifier
-                                      .padding(top = 3.dp),
+                                      .padding(top = 5.dp),
                                   color = colorResource(id = R.color.CardTextColor)
 
                               )

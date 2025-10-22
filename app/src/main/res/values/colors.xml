@@ -13,7 +13,11 @@
     <color name="myCustomColor">#ebf1fd</color>
     <color name="CustomColor">#1976D2</color>
     <color name="MainCardColor">#0f366d</color>
+    <color name="SubCardColor">#800F366D</color>
+    <color name="SubOneCardColor">#330F366D</color>
     <color name="CardTextColor">#0f366d</color>
     <color name="Star">#DE0000</color>
+    <color name="SecondaryCardColor">#2D5DA8</color>
+
 
 </resources>

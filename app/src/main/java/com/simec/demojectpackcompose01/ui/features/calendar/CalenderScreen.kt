@@ -60,7 +60,6 @@ fun CalenderScreen(navController: NavHostController){
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
                                 .align(Alignment.CenterStart)
-
                 )
                 Row (
                     modifier = Modifier

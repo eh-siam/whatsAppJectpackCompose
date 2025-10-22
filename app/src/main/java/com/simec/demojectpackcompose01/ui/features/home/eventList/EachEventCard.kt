@@ -45,7 +45,7 @@ fun EachEventCard(count : Int){
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .padding(vertical = 10.dp, horizontal = 3.dp),
+            .padding(vertical = 10.dp, horizontal = 2.dp),
         shape = RoundedCornerShape(10.dp),
         elevation = CardDefaults.cardElevation(2.dp),
         colors = CardDefaults.cardColors(
@@ -53,10 +53,10 @@ fun EachEventCard(count : Int){
         )
     ) {
 
-        Row {
-
-
-
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
             Card(
                 modifier = Modifier
                     .size(height = 150.dp, width = 150.dp)
@@ -72,7 +72,6 @@ fun EachEventCard(count : Int){
                         painter = painterResource(id = R.drawable.img),
                         contentDescription = "Social Image",
                         modifier = Modifier
-                            .fillMaxWidth()
                             .aspectRatio(1f)
                             .clip(RoundedCornerShape(8.dp)),
                         contentScale = ContentScale.Crop
@@ -82,14 +81,14 @@ fun EachEventCard(count : Int){
 
             Column(
                 modifier = Modifier
-                    .padding(start = 5.dp, top = 12.dp),
+                    .padding(top = 5.dp, bottom = 3.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
 
                 ) {
 
                 Row(
                     modifier = Modifier
-                        .padding(3.dp),
+                        .padding(start = 2.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
@@ -103,7 +102,7 @@ fun EachEventCard(count : Int){
                     )
                     Text(
                         text = "Social Event",
-                        fontSize = 14.sp,
+                        fontSize = 13.sp,
                         color = colorResource(id = R.color.result),
                         fontFamily =  NunitoSemiBold,
                         fontWeight = Bold,
@@ -112,9 +111,8 @@ fun EachEventCard(count : Int){
                     )
                 }
                 Row(
-                    modifier = Modifier
-                        .padding(1.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment =
+                        Alignment.CenterVertically
                 ) {
                     Text(
                         text = "Persons :",
@@ -122,11 +120,11 @@ fun EachEventCard(count : Int){
                         fontFamily =  NunitoMedium,
                         color = colorResource(id = R.color.level),
                         modifier = Modifier
-                            .padding(end = 5.dp, start = 2.dp)
+                            .padding(end = 5.dp, start = 3.dp)
                     )
                     Text(
                         text = "120",
-                        fontSize = 14.sp,
+                        fontSize = 13.sp,
                         fontWeight = Bold,
                         fontFamily = NunitoSemiBold,
                         color = colorResource(id = R.color.result),
@@ -135,8 +133,7 @@ fun EachEventCard(count : Int){
                     )
                 }
                 Row(
-                    modifier = Modifier
-                        .padding(4.dp),
+                    modifier = Modifier,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
@@ -145,13 +142,13 @@ fun EachEventCard(count : Int){
                         fontFamily =  NunitoMedium,
                         color = colorResource(id = R.color.level),
                         modifier = Modifier
-                            .padding(end = 5.dp)
+                            .padding(end = 5.dp, start = 3.dp)
 
                     )
                     Text(
                         text = "09-10-25",
                         fontWeight= Bold,
-                        fontSize = 14.sp,
+                        fontSize = 13.sp,
                         fontFamily =  NunitoSemiBold,
                         color = colorResource(id = R.color.result),
 
@@ -160,7 +157,7 @@ fun EachEventCard(count : Int){
 
                 Row  (
                     modifier = Modifier
-                        .padding(3.dp)
+                        .padding(1.dp)
                         .align(Alignment.Start)
                 ) {
                     Text(
@@ -169,23 +166,22 @@ fun EachEventCard(count : Int){
                         fontSize = 12.sp,
                         color = colorResource(id = R.color.level),
                         modifier = Modifier
-                            .padding(end = 5.dp)
+                            .padding(end = 5.dp, start = 2.dp, top = 1.dp)
                     )
                     Text(
                         text = "02:30 PM",
                         fontWeight = Bold,
-                        fontSize = 14.sp,
+                        fontSize = 13.sp,
                         fontFamily =  NunitoSemiBold,
                         color = colorResource(id = R.color.result),
                         modifier = Modifier
-                        // you can align it to the end if you want
+
                     )
                 }
 
 
                 Row(
-                    modifier = Modifier
-                        .padding(1.dp),
+                    modifier = Modifier,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
@@ -194,13 +190,14 @@ fun EachEventCard(count : Int){
                         color = colorResource(id = R.color.level),
                         fontFamily =  NunitoMedium,
                         modifier = Modifier
-                            .padding(start = 2.dp ,end = 5.dp)
+                            .padding(start = 3.dp ,end = 5.dp)
                     )
                     Text(
                         text = "127,Sec 12,Uttara",
                         modifier = Modifier,
                         fontWeight = Bold,
-                        fontSize = 14.sp,
+                        fontSize = 13.sp,
+                        maxLines = 2,
                         fontFamily =  NunitoSemiBold,
                         color = colorResource(id = R.color.result),
                         // you can align it to the end if you want
