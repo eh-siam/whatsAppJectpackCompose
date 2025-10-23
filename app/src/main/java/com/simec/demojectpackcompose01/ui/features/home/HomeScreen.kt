@@ -62,7 +62,6 @@ fun HomeScreen(navController: NavHostController? = null){
                 .padding(top = 20.dp, start = 16.dp, end = 16.dp),
             contentAlignment = Alignment.Center
 
-
         ) {
             Image(
                 painter = painterResource(R.drawable.profile_1),

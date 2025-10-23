@@ -82,25 +82,24 @@ fun PaymentScreen(navController: NavHostController){
                     Column (
                         modifier = Modifier
                             .background(colorResource(id = R.color.MainCardColor)),
-
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.payout),
+                            painter = painterResource(id = R.drawable.save_money),
                             contentDescription = "Total Earnings",
                             modifier = Modifier
                                 .size(40.dp)
-                                .align(Alignment.End)
-                                .padding(top = 10.dp, end = 16.dp)
+                                .align(Alignment.CenterHorizontally)
+                                .padding(top = 10.dp),
+                            colorFilter = ColorFilter.tint(colorResource(id = R.color.white))
 
                         )
-
                         Text(
                             text ="Total Earnings",
                             fontSize = 13.sp,
                             fontFamily = NunitoSemiBold,
                             color = colorResource(id = R.color.white),
                             modifier = Modifier
-                                .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                                .padding(top = 16.dp, start = 24.dp, end = 24.dp)
                         )
                         Row(
                             modifier = Modifier
@@ -145,12 +144,13 @@ fun PaymentScreen(navController: NavHostController){
                             .background(colorResource(id = R.color.MainCardColor))
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.payout),
+                            painter = painterResource(id = R.drawable.money),
                             contentDescription = "Total Earnings",
                             modifier = Modifier
                                 .size(40.dp)
-                                .align(Alignment.End)
-                                .padding(top = 10.dp, end = 16.dp)
+                                .align(Alignment.CenterHorizontally)
+                                .padding(top = 10.dp),
+                            colorFilter = ColorFilter.tint(colorResource(id = R.color.white))
 
                         )
 
@@ -207,13 +207,13 @@ fun PaymentScreen(navController: NavHostController){
                             .background(colorResource(id = R.color.MainCardColor)),
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.payout),
+                            painter = painterResource(id = R.drawable.revenue),
                             contentDescription = "Total Earnings",
                             modifier = Modifier
                                 .size(40.dp)
-                                .align(Alignment.End)
-                                .padding(top = 10.dp, end = 16.dp)
-
+                                .align(Alignment.CenterHorizontally)
+                                .padding(top = 10.dp),
+                            colorFilter = ColorFilter.tint(colorResource(id = R.color.white))
                         )
                         Text(
                             text = "Monthly Revenue",
@@ -371,7 +371,7 @@ fun PaymentScreen(navController: NavHostController){
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Image(
-                                painter = painterResource(R.drawable.taxes),
+                                painter = painterResource(R.drawable.tax),
                                 contentDescription = "payouts",
                                 colorFilter = ColorFilter.tint(colorResource(id = R.color.white)),
                                 modifier = Modifier

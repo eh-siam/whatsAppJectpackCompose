@@ -276,7 +276,7 @@ fun SettingsScreen(navController: NavHostController) {
             }
 
 
-            //Organizer Tools
+            //Event Analytics
             Card(
                 modifier = Modifier
                     .padding(top = 16.dp)
@@ -285,7 +285,7 @@ fun SettingsScreen(navController: NavHostController) {
                 elevation = CardDefaults.cardElevation(2.dp),
                 shape = RoundedCornerShape(10.dp),
                 onClick = {
-                    navController.navigate("organizer")
+                    navController.navigate("event_analytics")
                 }
             ) {
 

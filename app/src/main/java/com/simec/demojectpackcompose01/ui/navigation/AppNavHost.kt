@@ -13,11 +13,11 @@ import com.simec.demojectpackcompose01.ui.features.home.profile.ProfileScreen
 import com.simec.demojectpackcompose01.ui.features.settings.SettingsScreen
 import com.simec.demojectpackcompose01.ui.features.settings.account_actions.AccountActionScreen
 import com.simec.demojectpackcompose01.ui.features.settings.app_preference.AppPreferenceScreen
+import com.simec.demojectpackcompose01.ui.features.settings.event_analytics.EventAnalyticsScreen
 import com.simec.demojectpackcompose01.ui.features.settings.event_preference.EventPreferenceScreen
 import com.simec.demojectpackcompose01.ui.features.settings.organizer_tools.OrganizerToolsScreen
 import com.simec.demojectpackcompose01.ui.features.settings.payment.PaymentScreen
 import com.simec.demojectpackcompose01.ui.features.settings.payment.payout_methods.PayoutMethodsScreen
-import com.simec.demojectpackcompose01.ui.features.settings.rewards_membership.RewardsScreen
 import com.simec.demojectpackcompose01.ui.features.settings.support.SupportScreen
 
 
@@ -64,20 +64,20 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
         composable("support") {
             SupportScreen(navController = navController)
         }
-        composable("account_actions") {
-            AccountActionScreen(navController = navController)
-        }
         composable("organizer") {
             OrganizerToolsScreen(navController = navController)
         }
-        composable("rewards") {
-            RewardsScreen(navController = navController)
+        composable("event_analytics") {
+            EventAnalyticsScreen(navController = navController)
         }
         composable("app_preference") {
             AppPreferenceScreen(navController = navController)
         }
         composable("payout_methods") {
             PayoutMethodsScreen(navController = navController)
+        }
+        composable("account_actions") {
+            AccountActionScreen(navController = navController)
         }
     }
 }
