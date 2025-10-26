@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.simec.demojectpackcompose01"
+    namespace = "com.simec.e_planner"
     compileSdk = 36
 
     defaultConfig {
