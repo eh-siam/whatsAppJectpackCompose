@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -58,8 +59,9 @@ fun HomeScreen(navController: NavHostController? = null){
       {
         Box(
             modifier = Modifier
+                .background(colorResource(id = R.color.white))
                 .fillMaxWidth()
-                .padding(top = 20.dp, start = 16.dp, end = 16.dp),
+                .padding(top = 10.dp, start = 16.dp, end = 16.dp, bottom = 12.dp),
             contentAlignment = Alignment.Center
 
         ) {
@@ -77,10 +79,10 @@ fun HomeScreen(navController: NavHostController? = null){
             )
             Spacer(modifier = Modifier.padding(start = 10.dp))
             Text(
-                text = "My Events",
-                fontSize = 18.sp,
+                text = "Events Dashboard",
+                fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black,
+                color = colorResource(id = R.color.MainCardColor),
                 modifier = Modifier
                     .padding(start = 10.dp)
                     .align(Alignment.Center),
@@ -90,7 +92,7 @@ fun HomeScreen(navController: NavHostController? = null){
                 text = "Add(+)",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.CardTextColor),
+                color = colorResource(id = R.color.CustomColor),
                 modifier = Modifier
                     .padding(start = 10.dp)
                     .align(Alignment.CenterEnd)
@@ -98,539 +100,546 @@ fun HomeScreen(navController: NavHostController? = null){
                     navController?.navigate("add")
                 }
             )
+
         }
 
-          Spacer(modifier = Modifier.padding(start = 10.dp))
-          Text(
-              text = "Monthly Event Overview",
-              fontSize = 16.sp,
-              fontWeight = FontWeight.Medium,
-              color = colorResource(id = R.color.title),
+          Divider(
+              color = colorResource(id = R.color.grey),
+              thickness = 0.5.dp,
               modifier = Modifier
-                  .padding(top = 28.dp,start = 16.dp)
-              )
-
-
-          Card(modifier = Modifier
-              .fillMaxWidth()
-              .padding(vertical = 10.dp, horizontal = 16.dp),
-              shape = RoundedCornerShape(10.dp),
-              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
-              elevation = CardDefaults.cardElevation(2.dp)
-          ){
-              Box {
-
-                  Image(
-                      painter = painterResource(id = R.drawable.bg_background_rectangle),
-                      contentDescription = "Card design",
-                      contentScale = ContentScale.Crop,
-                      modifier = Modifier
-                          .fillMaxWidth())
-
-                  Column {
-
-                      Column (
-                          modifier = Modifier
-                              .fillMaxWidth()
-                              .padding(horizontal = 20.dp, vertical = 5.dp)
-                      ){
-                          Row(
-                              modifier = Modifier
-                                  .padding(top = 16.dp, start = 16.dp, end = 16.dp),
-                              horizontalArrangement = Arrangement.spacedBy(75.dp)
-                          ) {
-                              Column {
-
-                                  Text(
-                                      text = "Upcoming Events",
-                                      fontSize = 13.sp,
-                                      fontFamily = NunitoMedium,
-                                      fontWeight = FontWeight.Medium,
-                                      color = colorResource(id = R.color.CardTextColor)
-
-                                  )
-                                  Spacer(modifier = Modifier
-                                      .padding(3.dp))
-                                  Text(
-                                      text = "24",
-                                      fontSize = 16.sp,
-                                      fontWeight = FontWeight.Bold,
-                                      color = colorResource(id = R.color.CardTextColor),
-                                      modifier = Modifier
-                                          .align(Alignment.CenterHorizontally)
-                                  )
-
-                              }
-                              Column{
-                                  Text(
-                                      text = "Ongoing Events",
-                                      fontSize = 13.sp,
-                                      fontFamily = NunitoMedium,
-                                      fontWeight = FontWeight.Medium,
-                                      color = colorResource(id = R.color.CardTextColor)
-
-                                  )
-                                  Spacer(modifier = Modifier
-                                      .padding(3.dp))
-                                  Text(
-                                      text = "12",
-                                      fontSize = 16.sp,
-                                      fontWeight = FontWeight.Bold,
-                                      color = colorResource(id = R.color.CardTextColor),
-                                      modifier = Modifier
-                                          .align(Alignment.CenterHorizontally)
-                                  )
-
-                              }
-                          }
-                      }
-
-                      Column (
-                          modifier = Modifier
-                              .fillMaxWidth()
-                              .padding(horizontal = 20.dp, vertical = 5.dp)
-                      ){
-                          Row(
-                              modifier = Modifier
-                                  .padding(top = 5.dp, start = 16.dp, end = 10.dp),
-                              horizontalArrangement = Arrangement.spacedBy(70.dp)
-                          ) {
-                              Column {
-
-                                  Text(
-                                      text = "Completed Events ",
-                                      fontSize = 13.sp,
-                                      fontFamily = NunitoMedium,
-                                      fontWeight = FontWeight.Medium,
-                                      color = colorResource(id = R.color.CardTextColor)
-
-                                  )
-                                  Spacer(modifier = Modifier
-                                      .padding(3.dp))
-                                  Text(
-                                      text = "06",
-                                      fontSize = 16.sp,
-                                      fontWeight = FontWeight.Bold,
-                                      color = colorResource(id = R.color.CardTextColor),
-                                      modifier = Modifier
-                                          .align(Alignment.CenterHorizontally)
-                                  )
-
-                              }
-                              Column{
-                                  Text(
-                                      text = "Rejected Events",
-                                      fontSize = 13.sp,
-                                      fontFamily = NunitoMedium,
-                                      fontWeight = FontWeight.Medium,
-                                      color = colorResource(id = R.color.CardTextColor)
-
-                                  )
-                                  Spacer(modifier = Modifier
-                                      .padding(3.dp))
-                                  Text(
-                                      text = "02",
-                                      fontSize = 16.sp,
-                                      fontWeight = FontWeight.Bold,
-                                      color = colorResource(id = R.color.CardTextColor),
-                                      modifier = Modifier
-                                          .align(Alignment.CenterHorizontally)
-                                  )
-
-                              }
-                          }
-                      }
-
-                      Spacer(modifier = Modifier
-                          .padding(top = 18.dp))
-
-                      Row(
-                          modifier = Modifier
-                              .fillMaxWidth()
-                              .background(colorResource(R.color.MainCardColor))
-                              .padding(top = 12.dp)
-                      ){
-                          Text(
-                              text = "Total Events :",
-                              fontSize = 13.sp,
-                              modifier = Modifier
-                                  .padding(start = 120.dp, bottom = 10.dp),
-                              fontFamily = NunitoMedium,
-                              fontWeight = FontWeight.Medium,
-                              color = colorResource(id = R.color.myCustomColor)
-
-                          )
-                          Spacer(modifier = Modifier
-                              .padding(start = 10.dp))
-
-                          Text(
-                              text = "02",
-                              fontSize = 16.sp,
-                              fontWeight = FontWeight.Bold,
-                              color = colorResource(id = R.color.myCustomColor)
-
-                          )
-                      }
-                  }
-              }
-          }
+                  .fillMaxWidth()
+          )
 
           Column(
               modifier = Modifier
                   .verticalScroll(state = rememberScrollState())
-
-          ){
-
-              Column (
-                  modifier = Modifier
-                      .fillMaxWidth()
-                      .padding(horizontal = 16.dp, vertical = 7.dp)
-              ){
-                  Box(
-                      modifier = Modifier
-                          .fillMaxWidth(),
-                      contentAlignment = Alignment.Center
-
-                  ) {
-                      Text(
-                          text = "Upcoming Event",
-                          fontSize = 16.sp,
-                          fontWeight = FontWeight.Medium,
-                          color = colorResource(id = R.color.title),
-                          modifier = Modifier
-                              .align(Alignment.CenterStart),
-                      )
-                      Text(
-                          text = "View All",
-                          fontSize = 16.sp,
-                          fontWeight = FontWeight.Bold,
-                          color = colorResource(id = R.color.CardTextColor),
-                          modifier = Modifier
-                              .align(Alignment.CenterEnd),
-                      )
-                  }
-                  Column(
-                      modifier = Modifier
-                  ) {
-                      LazyColumn(
-                          modifier = Modifier
-                              .height(350.dp),
-                          userScrollEnabled = false //scroll off
-
-                      ) {
-                          items(2){ index ->
-                              EachEventCard(count = index)
-                          }
-                      }
-                  }
-              }
+          ) {
+              Spacer(modifier = Modifier.padding(start = 10.dp))
               Text(
-                  text = "Event Categories",
+                  text = "Monthly Event Overview",
                   fontSize = 16.sp,
                   fontWeight = FontWeight.Medium,
                   color = colorResource(id = R.color.title),
                   modifier = Modifier
-                      .padding(horizontal = 16.dp, vertical = 5.dp)
+                      .padding(top = 16.dp,start = 16.dp)
               )
-              Column (
-                  modifier = Modifier
-                      .fillMaxWidth()
-                      .padding(horizontal = 16.dp, vertical = 10.dp)
-
+              Card(modifier = Modifier
+                  .fillMaxWidth()
+                  .padding(vertical = 10.dp, horizontal = 16.dp),
+                  shape = RoundedCornerShape(10.dp),
+                  border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+                  elevation = CardDefaults.cardElevation(2.dp)
               ){
-                  Row(
-                      modifier = Modifier
-                          .fillMaxWidth(),
-                      horizontalArrangement = Arrangement.spacedBy(20.dp)
-                  )
-                  {
-                      Card(
+                  Box {
+
+                      Image(
+                          painter = painterResource(id = R.drawable.bg_background_rectangle),
+                          contentDescription = "Card design",
+                          contentScale = ContentScale.Crop,
                           modifier = Modifier
-                              .weight(1f)
-                              .height(120.dp),
-                          elevation = CardDefaults.cardElevation(2.dp),
-                          shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
-                          colors = CardDefaults.cardColors(
-                              containerColor = Color.White
-                          )
+                              .fillMaxWidth())
+
+                      Column {
+
+                          Column (
+                              modifier = Modifier
+                                  .fillMaxWidth()
+                                  .padding(horizontal = 20.dp, vertical = 5.dp)
+                          ){
+                              Row(
+                                  modifier = Modifier
+                                      .padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                                  horizontalArrangement = Arrangement.spacedBy(75.dp)
+                              ) {
+                                  Column {
+
+                                      Text(
+                                          text = "Upcoming Events",
+                                          fontSize = 13.sp,
+                                          fontFamily = NunitoMedium,
+                                          fontWeight = FontWeight.Medium,
+                                          color = colorResource(id = R.color.CardTextColor)
+
+                                      )
+                                      Spacer(modifier = Modifier
+                                          .padding(3.dp))
+                                      Text(
+                                          text = "24",
+                                          fontSize = 16.sp,
+                                          fontWeight = FontWeight.Bold,
+                                          color = colorResource(id = R.color.CardTextColor),
+                                          modifier = Modifier
+                                              .align(Alignment.CenterHorizontally)
+                                      )
+
+                                  }
+                                  Column{
+                                      Text(
+                                          text = "Ongoing Events",
+                                          fontSize = 13.sp,
+                                          fontFamily = NunitoMedium,
+                                          fontWeight = FontWeight.Medium,
+                                          color = colorResource(id = R.color.CardTextColor)
+
+                                      )
+                                      Spacer(modifier = Modifier
+                                          .padding(3.dp))
+                                      Text(
+                                          text = "12",
+                                          fontSize = 16.sp,
+                                          fontWeight = FontWeight.Bold,
+                                          color = colorResource(id = R.color.CardTextColor),
+                                          modifier = Modifier
+                                              .align(Alignment.CenterHorizontally)
+                                      )
+
+                                  }
+                              }
+                          }
+
+                          Column (
+                              modifier = Modifier
+                                  .fillMaxWidth()
+                                  .padding(horizontal = 20.dp, vertical = 5.dp)
+                          ){
+                              Row(
+                                  modifier = Modifier
+                                      .padding(top = 5.dp, start = 16.dp, end = 10.dp),
+                                  horizontalArrangement = Arrangement.spacedBy(70.dp)
+                              ) {
+                                  Column {
+
+                                      Text(
+                                          text = "Completed Events ",
+                                          fontSize = 13.sp,
+                                          fontFamily = NunitoMedium,
+                                          fontWeight = FontWeight.Medium,
+                                          color = colorResource(id = R.color.CardTextColor)
+
+                                      )
+                                      Spacer(modifier = Modifier
+                                          .padding(3.dp))
+                                      Text(
+                                          text = "06",
+                                          fontSize = 16.sp,
+                                          fontWeight = FontWeight.Bold,
+                                          color = colorResource(id = R.color.CardTextColor),
+                                          modifier = Modifier
+                                              .align(Alignment.CenterHorizontally)
+                                      )
+
+                                  }
+                                  Column{
+                                      Text(
+                                          text = "Rejected Events",
+                                          fontSize = 13.sp,
+                                          fontFamily = NunitoMedium,
+                                          fontWeight = FontWeight.Medium,
+                                          color = colorResource(id = R.color.CardTextColor)
+
+                                      )
+                                      Spacer(modifier = Modifier
+                                          .padding(3.dp))
+                                      Text(
+                                          text = "02",
+                                          fontSize = 16.sp,
+                                          fontWeight = FontWeight.Bold,
+                                          color = colorResource(id = R.color.CardTextColor),
+                                          modifier = Modifier
+                                              .align(Alignment.CenterHorizontally)
+                                      )
+
+                                  }
+                              }
+                          }
+
+                          Spacer(modifier = Modifier
+                              .padding(top = 18.dp))
+
+                          Row(
+                              modifier = Modifier
+                                  .fillMaxWidth()
+                                  .background(colorResource(R.color.MainCardColor))
+                                  .padding(top = 12.dp)
+                          ){
+                              Text(
+                                  text = "Total Events :",
+                                  fontSize = 13.sp,
+                                  modifier = Modifier
+                                      .padding(start = 120.dp, bottom = 10.dp),
+                                  fontFamily = NunitoMedium,
+                                  fontWeight = FontWeight.Medium,
+                                  color = colorResource(id = R.color.myCustomColor)
+
+                              )
+                              Spacer(modifier = Modifier
+                                  .padding(start = 10.dp))
+
+                              Text(
+                                  text = "02",
+                                  fontSize = 16.sp,
+                                  fontWeight = FontWeight.Bold,
+                                  color = colorResource(id = R.color.myCustomColor)
+
+                              )
+                          }
+                      }
+                  }
+              }
+
+              Column(
+              ){
+
+                  Column (
+                      modifier = Modifier
+                          .fillMaxWidth()
+                          .padding(horizontal = 16.dp, vertical = 7.dp)
+                  ){
+                      Box(
+                          modifier = Modifier
+                              .fillMaxWidth(),
+                          contentAlignment = Alignment.Center
 
                       ) {
-                          Column(
+                          Text(
+                              text = "Upcoming Event",
+                              fontSize = 16.sp,
+                              fontWeight = FontWeight.Medium,
+                              color = colorResource(id = R.color.title),
                               modifier = Modifier
-                                  .padding(20.dp)
-                                  .align(Alignment.CenterHorizontally),
-                              horizontalAlignment = Alignment.CenterHorizontally // Center align
+                                  .align(Alignment.CenterStart),
+                          )
+                          Text(
+                              text = "View All",
+                              fontSize = 16.sp,
+                              fontWeight = FontWeight.Bold,
+                              color = colorResource(id = R.color.CustomColor),
+                              modifier = Modifier
+                                  .align(Alignment.CenterEnd),
+                          )
+                      }
+                      Column(
+                          modifier = Modifier
+                      ) {
+                          LazyColumn(
+                              modifier = Modifier
+                                  .height(350.dp),
+                              userScrollEnabled = false //scroll off
 
+                          ) {
+                              items(2){ index ->
+                                  EachEventCard(count = index)
+                              }
+                          }
+                      }
+                  }
+                  Text(
+                      text = "Event Categories",
+                      fontSize = 16.sp,
+                      fontWeight = FontWeight.Medium,
+                      color = colorResource(id = R.color.title),
+                      modifier = Modifier
+                          .padding(horizontal = 16.dp, vertical = 5.dp)
+                  )
+                  Column (
+                      modifier = Modifier
+                          .fillMaxWidth()
+                          .padding(horizontal = 16.dp, vertical = 10.dp)
 
-                          ){
-                              Image(
-                                  painter = painterResource(R.drawable.dish),
-                                  contentDescription = "Food Pic",
+                  ){
+                      Row(
+                          modifier = Modifier
+                              .fillMaxWidth(),
+                          horizontalArrangement = Arrangement.spacedBy(20.dp)
+                      )
+                      {
+                          Card(
+                              modifier = Modifier
+                                  .weight(1f)
+                                  .height(120.dp),
+                              elevation = CardDefaults.cardElevation(2.dp),
+                              shape = RoundedCornerShape(10.dp),
+                              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+                              colors = CardDefaults.cardColors(
+                                  containerColor = Color.White
+                              )
+
+                          ) {
+                              Column(
                                   modifier = Modifier
-                                      .size(50.dp)
-                                      .clip(CircleShape)
+                                      .padding(20.dp)
                                       .align(Alignment.CenterHorizontally),
+                                  horizontalAlignment = Alignment.CenterHorizontally // Center align
 
-                              )
-                              Spacer(modifier = Modifier.width(16.dp))
-                              Text(
-                                  text = "Food",
-                                  fontSize = 14.sp,
-                                  fontFamily = NunitoSemiBold,
-                                  fontWeight = FontWeight.Medium,
-                                  color = colorResource(id = R.color.CardTextColor),
-                                  modifier = Modifier
-                                      .padding(top = 5.dp)
-                              )
+
+                              ){
+                                  Image(
+                                      painter = painterResource(R.drawable.dish),
+                                      contentDescription = "Food Pic",
+                                      modifier = Modifier
+                                          .size(50.dp)
+                                          .clip(CircleShape)
+                                          .align(Alignment.CenterHorizontally),
+
+                                      )
+                                  Spacer(modifier = Modifier.width(16.dp))
+                                  Text(
+                                      text = "Food",
+                                      fontSize = 14.sp,
+                                      fontFamily = NunitoSemiBold,
+                                      fontWeight = FontWeight.Medium,
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      modifier = Modifier
+                                          .padding(top = 5.dp)
+                                  )
+                              }
                           }
-                      }
 
-                      Card(
-                          modifier = Modifier
-                              .weight(1f)
-                              .height(120.dp),
-                          elevation = CardDefaults.cardElevation(2.dp),
-                          shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
-                          colors = CardDefaults.cardColors(
-                              containerColor = Color.White
-                          )
-
-                      ) {
-
-                          Column(
+                          Card(
                               modifier = Modifier
-                                  .padding(20.dp)
-                                  .align(Alignment.CenterHorizontally),
-                              horizontalAlignment = Alignment.CenterHorizontally // Center align
-                          ){
-
-                              Image(
-                                  painter = painterResource(R.drawable.coordination),
-                                  contentDescription = "Man Pic",
-                                  modifier = Modifier
-                                      .size(50.dp)
-                                      .clip(CircleShape)
-                                      .align(Alignment.CenterHorizontally)
+                                  .weight(1f)
+                                  .height(120.dp),
+                              elevation = CardDefaults.cardElevation(2.dp),
+                              shape = RoundedCornerShape(10.dp),
+                              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+                              colors = CardDefaults.cardColors(
+                                  containerColor = Color.White
                               )
-                              Spacer(modifier = Modifier.width(20.dp))
 
+                          ) {
 
-
-                              Text(
-                                  text = "Staff Coordination",
-                                  color = colorResource(id = R.color.CardTextColor),
-                                  fontWeight = FontWeight.Bold,
+                              Column(
                                   modifier = Modifier
-                                      .padding(top = 5.dp),
-                                  fontFamily = NunitoSemiBold,
-                                  fontSize = 14.sp
+                                      .padding(20.dp)
+                                      .align(Alignment.CenterHorizontally),
+                                  horizontalAlignment = Alignment.CenterHorizontally // Center align
+                              ){
 
-                              )
+                                  Image(
+                                      painter = painterResource(R.drawable.coordination),
+                                      contentDescription = "Man Pic",
+                                      modifier = Modifier
+                                          .size(50.dp)
+                                          .clip(CircleShape)
+                                          .align(Alignment.CenterHorizontally)
+                                  )
+                                  Spacer(modifier = Modifier.width(20.dp))
+
+
+
+                                  Text(
+                                      text = "Staff Coordination",
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      fontWeight = FontWeight.Bold,
+                                      modifier = Modifier
+                                          .padding(top = 5.dp),
+                                      fontFamily = NunitoSemiBold,
+                                      fontSize = 14.sp
+
+                                  )
+                              }
                           }
                       }
                   }
-              }
-              Column (
-                  modifier = Modifier
-                      .fillMaxWidth()
-                      .padding(horizontal = 16.dp, vertical = 10.dp)
-
-              ){
-                  Row(
+                  Column (
                       modifier = Modifier
-                          .fillMaxWidth(),
-                      horizontalArrangement = Arrangement.spacedBy(20.dp)
-                  )
-                  {
-                      Card(
+                          .fillMaxWidth()
+                          .padding(horizontal = 16.dp, vertical = 10.dp)
+
+                  ){
+                      Row(
                           modifier = Modifier
-                              .weight(1f)
-                              .height(120.dp),
-                          elevation = CardDefaults.cardElevation(2.dp),
-                          shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
-                          colors = CardDefaults.cardColors(
-                              containerColor = Color.White
-                          )
-
-                      ) {
-                          Column(
+                              .fillMaxWidth(),
+                          horizontalArrangement = Arrangement.spacedBy(20.dp)
+                      )
+                      {
+                          Card(
                               modifier = Modifier
-                                  .padding(20.dp)
-                                  .align(Alignment.CenterHorizontally),
-                              horizontalAlignment = Alignment.CenterHorizontally // Center align
-
-
-                          ){
-                              Image(
-                                  painter = painterResource(R.drawable.christmas_lights),
-                                  contentDescription = "Food Pic",
-                                  modifier = Modifier
-                                      .size(50.dp)
-                                      .clip(CircleShape)
-                                      .align(Alignment.CenterHorizontally)
-
+                                  .weight(1f)
+                                  .height(120.dp),
+                              elevation = CardDefaults.cardElevation(2.dp),
+                              shape = RoundedCornerShape(10.dp),
+                              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+                              colors = CardDefaults.cardColors(
+                                  containerColor = Color.White
                               )
-                              Spacer(modifier = Modifier.width(20.dp))
-                              Text(
-                                  text = "Decoration",
-                                  fontSize = 15.sp,
-                                  fontFamily = NunitoSemiBold,
-                                  fontWeight = FontWeight.Medium,
-                                  color = colorResource(id = R.color.CardTextColor),
+
+                          ) {
+                              Column(
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
-                              )
-                          }
-                      }
-
-                      Card(
-                          modifier = Modifier
-                              .weight(1f)
-                              .height(120.dp),
-                          elevation = CardDefaults.cardElevation(2.dp),
-                          shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
-                          colors = CardDefaults.cardColors(
-                              containerColor = Color.White
-                          )
-
-                      ) {
-
-                          Column(
-                              modifier = Modifier
-                                  .padding(20.dp)
-                                  .align(Alignment.CenterHorizontally),
-                              horizontalAlignment = Alignment.CenterHorizontally // Center align
-                          ){
-
-                              Image(
-                                  painter = painterResource(R.drawable.budget),
-                                  contentDescription = "Man Pic",
-                                  modifier = Modifier
-                                      .size(50.dp)
-                                      .clip(CircleShape)
-                              )
-                              Spacer(modifier = Modifier.width(20.dp))
+                                      .padding(20.dp)
+                                      .align(Alignment.CenterHorizontally),
+                                  horizontalAlignment = Alignment.CenterHorizontally // Center align
 
 
+                              ){
+                                  Image(
+                                      painter = painterResource(R.drawable.christmas_lights),
+                                      contentDescription = "Food Pic",
+                                      modifier = Modifier
+                                          .size(50.dp)
+                                          .clip(CircleShape)
+                                          .align(Alignment.CenterHorizontally)
 
-                              Text(
-                                  text = "Budget",
-                                  fontWeight = FontWeight.Bold,
-                                  modifier = Modifier
-                                      .padding(top = 5.dp),
-                                  fontSize = 15.sp,
-                                  fontFamily = NunitoSemiBold,
-                                  color = colorResource(id = R.color.CardTextColor)
-
-                              )
+                                  )
+                                  Spacer(modifier = Modifier.width(20.dp))
+                                  Text(
+                                      text = "Decoration",
+                                      fontSize = 15.sp,
+                                      fontFamily = NunitoSemiBold,
+                                      fontWeight = FontWeight.Medium,
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      modifier = Modifier
+                                          .padding(top = 5.dp)
+                                  )
+                              }
                           }
 
+                          Card(
+                              modifier = Modifier
+                                  .weight(1f)
+                                  .height(120.dp),
+                              elevation = CardDefaults.cardElevation(2.dp),
+                              shape = RoundedCornerShape(10.dp),
+                              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+                              colors = CardDefaults.cardColors(
+                                  containerColor = Color.White
+                              )
+
+                          ) {
+
+                              Column(
+                                  modifier = Modifier
+                                      .padding(20.dp)
+                                      .align(Alignment.CenterHorizontally),
+                                  horizontalAlignment = Alignment.CenterHorizontally // Center align
+                              ){
+
+                                  Image(
+                                      painter = painterResource(R.drawable.budget),
+                                      contentDescription = "Man Pic",
+                                      modifier = Modifier
+                                          .size(50.dp)
+                                          .clip(CircleShape)
+                                  )
+                                  Spacer(modifier = Modifier.width(20.dp))
+
+
+
+                                  Text(
+                                      text = "Budget",
+                                      fontWeight = FontWeight.Bold,
+                                      modifier = Modifier
+                                          .padding(top = 5.dp),
+                                      fontSize = 15.sp,
+                                      fontFamily = NunitoSemiBold,
+                                      color = colorResource(id = R.color.CardTextColor)
+
+                                  )
+                              }
+
+                          }
                       }
                   }
-              }
-              Column (
-                  modifier = Modifier
-                      .fillMaxWidth()
-                      .padding(horizontal = 16.dp, vertical = 10.dp)
-
-              ){
-                  Row(
+                  Column (
                       modifier = Modifier
-                          .fillMaxWidth(),
-                      horizontalArrangement = Arrangement.spacedBy(20.dp)
-                  )
-                  {
-                      Card(
+                          .fillMaxWidth()
+                          .padding(horizontal = 16.dp, vertical = 10.dp)
+
+                  ){
+                      Row(
                           modifier = Modifier
-                              .weight(1f)
-                              .height(120.dp),
-                          elevation = CardDefaults.cardElevation(2.dp),
-                          shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
-                          colors = CardDefaults.cardColors(
-                              containerColor = Color.White
-                          )
-
-                      ) {
-                          Column(
+                              .fillMaxWidth(),
+                          horizontalArrangement = Arrangement.spacedBy(20.dp)
+                      )
+                      {
+                          Card(
                               modifier = Modifier
-                                  .padding(20.dp)
-                                  .align(Alignment.CenterHorizontally),
-                              horizontalAlignment = Alignment.CenterHorizontally // Center align
-
-
-                          ){
-                              Image(
-                                  painter = painterResource(R.drawable.task_list),
-                                  contentDescription = "Food Pic",
-                                  modifier = Modifier
-                                      .size(50.dp)
-                                      .clip(CircleShape)
-
+                                  .weight(1f)
+                                  .height(120.dp),
+                              elevation = CardDefaults.cardElevation(2.dp),
+                              shape = RoundedCornerShape(10.dp),
+                              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+                              colors = CardDefaults.cardColors(
+                                  containerColor = Color.White
                               )
-                              Spacer(modifier = Modifier.width(20.dp))
-                              Text(
-                                  text = "Task List",
-                                  fontSize = 15.sp,
-                                  fontFamily = NunitoSemiBold,
-                                  fontWeight = FontWeight.Medium,
-                                  color = colorResource(id = R.color.CardTextColor),
+
+                          ) {
+                              Column(
                                   modifier = Modifier
-                                      .padding(top = 5.dp)
-                              )
+                                      .padding(20.dp)
+                                      .align(Alignment.CenterHorizontally),
+                                  horizontalAlignment = Alignment.CenterHorizontally // Center align
+
+
+                              ){
+                                  Image(
+                                      painter = painterResource(R.drawable.task_list),
+                                      contentDescription = "Food Pic",
+                                      modifier = Modifier
+                                          .size(50.dp)
+                                          .clip(CircleShape)
+
+                                  )
+                                  Spacer(modifier = Modifier.width(20.dp))
+                                  Text(
+                                      text = "Task List",
+                                      fontSize = 15.sp,
+                                      fontFamily = NunitoSemiBold,
+                                      fontWeight = FontWeight.Medium,
+                                      color = colorResource(id = R.color.CardTextColor),
+                                      modifier = Modifier
+                                          .padding(top = 5.dp)
+                                  )
+                              }
                           }
-                      }
 
-                      Card(
-                          modifier = Modifier
-                              .weight(1f)
-                              .height(120.dp),
-                          elevation = CardDefaults.cardElevation(2.dp),
-                          shape = RoundedCornerShape(10.dp),
-                          border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
-                          colors = CardDefaults.cardColors(
-                              containerColor = Color.White
-                          )
-
-                      ) {
-
-                          Column(
+                          Card(
                               modifier = Modifier
-                                  .padding(20.dp)
-                                  .align(Alignment.CenterHorizontally),
-                              horizontalAlignment = Alignment.CenterHorizontally // Center align
-                          ){
-
-                              Image(
-                                  painter = painterResource(R.drawable.notes),
-                                  contentDescription = "Man Pic",
-                                  modifier = Modifier
-                                      .size(50.dp)
-                                      .clip(CircleShape)
+                                  .weight(1f)
+                                  .height(120.dp),
+                              elevation = CardDefaults.cardElevation(2.dp),
+                              shape = RoundedCornerShape(10.dp),
+                              border = BorderStroke(1.dp, colorResource(id = R.color.MainCardColor)),
+                              colors = CardDefaults.cardColors(
+                                  containerColor = Color.White
                               )
-                              Spacer(modifier = Modifier.width(20.dp))
 
-                              Text(
-                                  text = "Notes",
-                                  fontSize = 15.sp,
-                                  fontFamily = NunitoSemiBold,
-                                  fontWeight = FontWeight.Bold,
+                          ) {
+
+                              Column(
                                   modifier = Modifier
-                                      .padding(top = 5.dp),
-                                  color = colorResource(id = R.color.CardTextColor)
+                                      .padding(20.dp)
+                                      .align(Alignment.CenterHorizontally),
+                                  horizontalAlignment = Alignment.CenterHorizontally // Center align
+                              ){
 
-                              )
+                                  Image(
+                                      painter = painterResource(R.drawable.notes),
+                                      contentDescription = "Man Pic",
+                                      modifier = Modifier
+                                          .size(50.dp)
+                                          .clip(CircleShape)
+                                  )
+                                  Spacer(modifier = Modifier.width(20.dp))
+
+                                  Text(
+                                      text = "Notes",
+                                      fontSize = 15.sp,
+                                      fontFamily = NunitoSemiBold,
+                                      fontWeight = FontWeight.Bold,
+                                      modifier = Modifier
+                                          .padding(top = 5.dp),
+                                      color = colorResource(id = R.color.CardTextColor)
+
+                                  )
+                              }
                           }
                       }
                   }
               }
 
           }
-
     }
 }
 

@@ -47,15 +47,16 @@ fun CustomAppBarWithCard(title: String, onBackClick: (() -> Unit)? = null) {
                 .background(Color.White)
                 .height(40.dp),
             title = {
-                Text(text = title,
+                Text(
+                    text = title,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
-                        .padding(top = 3.dp)
-                ) },
+                        .padding(top = 4.dp)
+                )
+                    },
             navigationIcon = {
                 if (onBackClick != null) {
                     IconButton(onClick = onBackClick) {
-
                             Icon(
                                 modifier = Modifier
                                     .size(45.dp)

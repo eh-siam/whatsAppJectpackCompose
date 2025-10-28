@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,6 +35,8 @@ import com.simec.e_planner.ui.features.home.eventList.EachEventCard
 fun EventsScreen(navController: NavHostController) {
 
     var searchText by remember { mutableStateOf("") }
+
+    val listState = rememberLazyListState()
 
     Column(
         modifier = Modifier
@@ -70,7 +73,8 @@ fun EventsScreen(navController: NavHostController) {
 
         LazyColumn (
             modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 10.dp)
+                .padding(horizontal = 16.dp, vertical = 10.dp),
+            state = listState
         ){
             items(20){index ->
                 EachEventCard(index+1)

@@ -259,16 +259,16 @@ fun SettingsScreen(navController: NavHostController) {
                         fontSize = 16.sp,
                         color = Color.Black,
                         modifier = Modifier
-                            .padding(horizontal = 10.dp, vertical = 20.dp)
+                            .padding(horizontal = 10.dp, vertical = 16.dp)
 
                     )
                     Image(
                         painter = painterResource(R.drawable.arrow__11_),
                         contentDescription = "Arrow ",
                         modifier = Modifier
-                            .size(50.dp)
+                            .size(40.dp)
                             .clip(CircleShape)
-                            .padding(horizontal = 16.dp)
+                            .padding(end = 10.dp)
                     )
                 }
             }
@@ -342,7 +342,7 @@ fun SettingsScreen(navController: NavHostController) {
                         fontSize = 16.sp,
                         color = Color.Black,
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 20.dp)
+                            .padding(horizontal = 10.dp, vertical = 20.dp)
 
                     )
 

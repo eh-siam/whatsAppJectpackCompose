@@ -35,7 +35,7 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
 
     ) {
         composable("home") {
-            HomeScreen(navController = navController)
+            HomeScreen(navController)
         }
         composable("calendar") {
             CalenderScreen(navController)
@@ -50,6 +50,8 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
         composable("profile") {
             ProfileScreen(navController)
         }
+
+
         composable("add") {
             AddScreen(navController = navController)
         }

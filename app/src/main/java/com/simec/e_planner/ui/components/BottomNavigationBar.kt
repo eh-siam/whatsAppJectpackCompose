@@ -78,7 +78,6 @@ fun BottomNavigationBar(navController: NavController) {
             NavigationBarItem(
                 selected = isSelected,
                 onClick = {
-                    // ✅ Same route e click korle abar navigate korbe na
                     if (!isSelected) {
                         navController.navigate(item.route) {
                             // 🧠 Pop up to start destination to preserve previous states
