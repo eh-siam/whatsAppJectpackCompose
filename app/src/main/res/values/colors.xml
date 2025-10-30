@@ -18,7 +18,12 @@
     <color name="SubOneCardColor">#330F366D</color>
     <color name="CardTextColor">#0f366d</color>
     <color name="Star">#DE0000</color>
-    <color name="SecondaryCardColor">#2D5DA8</color>
+    <color name="SecondaryCardColor">#800F366D</color>
+    <color name="Wedding">#FFB515C0</color>
+    <color name="Birthday">#FF1565C0</color>
+    <color name="Concert">#FFE91E63</color>
+    <color name="Workshop">#FFFFC107</color>
+    <color name="Conference">#FF4CAF50</color>
 
 
 </resources>

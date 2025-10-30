@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "463142564159",
+    "project_id": "e-planner-77ff0",
+    "storage_bucket": "e-planner-77ff0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463142564159:android:d62c1370fe2b2bcf00238a",
+        "android_client_info": {
+          "package_name": "com.simec.ePlanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrfkSBPqLRn4ss1WUvrl4Gui4DqhkPQ0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463142564159:android:bdf3cc355853060e00238a",
+        "android_client_info": {
+          "package_name": "com.simec.eplanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrfkSBPqLRn4ss1WUvrl4Gui4DqhkPQ0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
