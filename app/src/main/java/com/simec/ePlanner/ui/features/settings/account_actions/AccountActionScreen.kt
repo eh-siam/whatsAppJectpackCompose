@@ -13,11 +13,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,6 +42,9 @@ import com.simec.ePlanner.ui.theme.NunitoSemiBold
 
 @Composable
 fun AccountActionScreen(navController: NavHostController) {
+
+    var showLogoutDialog by remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             CustomAppBarWithCard(
@@ -240,7 +250,7 @@ fun AccountActionScreen(navController: NavHostController) {
 
 
 
-
+                //logout
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -248,7 +258,7 @@ fun AccountActionScreen(navController: NavHostController) {
                     shape = RoundedCornerShape(8.dp),
                     elevation = CardDefaults.cardElevation(2.dp),
                     onClick = {
-                        navController.navigate("logout")
+                        showLogoutDialog = true  // Only show dialog
                     }
                 ) {
                     Row (
@@ -258,8 +268,6 @@ fun AccountActionScreen(navController: NavHostController) {
                         verticalAlignment = Alignment.CenterVertically,
 
                     ){
-
-
                         Image(
                             painter = painterResource(id = R.drawable.logout),
                             contentDescription = "Profile Image",
@@ -269,8 +277,6 @@ fun AccountActionScreen(navController: NavHostController) {
                             colorFilter = ColorFilter.tint(colorResource(id = R.color.Star)),
 
                             )
-
-
                         Column (
                             modifier = Modifier
                                 .padding(vertical =8.dp, horizontal = 16.dp)
@@ -282,7 +288,6 @@ fun AccountActionScreen(navController: NavHostController) {
                                 color = colorResource(id = R.color.Star),
                                 fontFamily = NunitoSemiBold,
                             )
-
                             Text(
                                 text = "Sign out from this device. ",
                                 modifier = Modifier,
@@ -291,9 +296,7 @@ fun AccountActionScreen(navController: NavHostController) {
                                 fontSize = 12.sp
                             )
                         }
-
                         Spacer(modifier = Modifier.width(88.dp))
-
                         Image(
                             painter = painterResource(id = R.drawable.arrow__11_),
                             colorFilter = ColorFilter.tint(colorResource(id = R.color.Star)),
@@ -301,6 +304,33 @@ fun AccountActionScreen(navController: NavHostController) {
                         )
                     }
                 }
+
+                // ✅ Logout confirmation dialog
+                if (showLogoutDialog) {
+                    AlertDialog(
+                        onDismissRequest = { showLogoutDialog = false },
+                        title = { Text("Logout") },
+                        text = { Text("Are you sure you want to logout?") },
+                        confirmButton = {
+                            TextButton(
+                                onClick = {
+                                    showLogoutDialog = false
+                                }
+                            ) {
+                                Text("Yes")
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(
+                                onClick = { showLogoutDialog = false }  // Close on No
+                            ) {
+                                Text("No")
+                            }
+                        }
+                    )
+                }
+
+
 
             }
 

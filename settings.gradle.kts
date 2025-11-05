@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "E-planner"
+rootProject.name = "Event Planner"
 include(":app")
  

@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.simec.ePlanner.SplashScreenUI
 import com.simec.ePlanner.ui.features.calendar.CalenderScreen
 import com.simec.ePlanner.ui.features.events.EventsScreen
 import com.simec.ePlanner.ui.features.home.HomeScreen
@@ -36,6 +37,7 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
         modifier = modifier
 
     ) {
+
         composable("home") {
             HomeScreen(navController)
         }
@@ -49,15 +51,13 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
             SettingsScreen(navController)
         }
 
+        //HomeScreen
         composable("profile") {
             ProfileScreen(navController)
         }
-
-
         composable("add") {
             AddScreen(navController = navController)
         }
-
         //Settings Screen (option)
         composable("event") {
             EventPreferenceScreen(navController = navController)
