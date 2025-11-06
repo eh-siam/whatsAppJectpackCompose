@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.simec.ePlanner.SplashScreenUI
 import com.simec.ePlanner.ui.features.calendar.CalenderScreen
 import com.simec.ePlanner.ui.features.events.EventsScreen
 import com.simec.ePlanner.ui.features.home.HomeScreen
@@ -16,7 +15,7 @@ import com.simec.ePlanner.ui.features.settings.account_actions.AccountActionScre
 import com.simec.ePlanner.ui.features.settings.account_actions.change_password.ChangePasswordScreen
 import com.simec.ePlanner.ui.features.settings.account_actions.deactivate.DeactivateScreen
 import com.simec.ePlanner.ui.features.settings.app_preference.AppPreferenceScreen
-import com.simec.ePlanner.ui.features.settings.event_analytics.EventAnalyticsScreen
+import com.simec.ePlanner.ui.features.settings.income_analytics.EventAnalyticsScreen
 import com.simec.ePlanner.ui.features.settings.event_preference.EventPreferenceScreen
 import com.simec.ePlanner.ui.features.settings.organizer_tools.OrganizerToolsScreen
 import com.simec.ePlanner.ui.features.settings.payment.PaymentScreen

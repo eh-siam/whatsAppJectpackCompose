@@ -1,4 +1,4 @@
-package com.simec.ePlanner.ui.features.settings.event_analytics
+package com.simec.ePlanner.ui.features.settings.income_analytics
 
 import com.simec.ePlanner.R
 import androidx.compose.foundation.background
@@ -30,7 +30,7 @@ import com.simec.ePlanner.ui.theme.NunitoSemiBold
 fun EventAnalyticsScreen(navController: NavHostController){
     Scaffold(
         topBar = { CustomAppBarWithCard(
-            title = "Event Analytics",
+            title = "Income Analytics",
             onBackClick = { navController.popBackStack() }
         )}
     ){ innerPadding ->

@@ -24,23 +24,21 @@ import com.simec.ePlanner.ui.model.sampleMonthlyIncome
 fun MonthlyIncomeBarChart(
     data: List<MonthlyIncome>,
     modifier: Modifier = Modifier,
-    barColor: Color = Color(0xFF1565C0),
+    mainCardColor: Color = Color(0xFF00469A), // 🔵 Your main color
     axisColor: Color = Color.Gray,
     labelColor: Color = Color.Black,
     maxChartHeight: Dp = 200.dp,
-    labelHeight: Dp = 20.dp // month label er jonno
+    labelHeight: Dp = 20.dp
 ) {
     val maxIncome = data.maxOfOrNull { it.income } ?: 0f
     val ySteps = 5
     val scrollState = rememberScrollState()
     val barWidthDp = 40.dp
     val spacingDp = 20.dp
-
     val density = LocalDensity.current
 
     Column(modifier = modifier.padding(5.dp)) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            // Y-axis labels
             Column(
                 modifier = Modifier.height(maxChartHeight),
                 verticalArrangement = Arrangement.SpaceBetween,
@@ -56,38 +54,42 @@ fun MonthlyIncomeBarChart(
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            // Scrollable bar chart
             Box(modifier = Modifier.horizontalScroll(scrollState)) {
                 Canvas(
                     modifier = Modifier
-                        .height(maxChartHeight + labelHeight) // label er jonno extra space
+                        .height(maxChartHeight + labelHeight)
                         .width(data.size * (barWidthDp + spacingDp))
                 ) {
-                    val canvasHeight = size.height - with(density) { labelHeight.toPx() } // bar height er jonno
+                    val canvasHeight = size.height - with(density) { labelHeight.toPx() }
                     val barWidth = with(density) { barWidthDp.toPx() }
                     val spacing = with(density) { spacingDp.toPx() }
 
                     data.forEachIndexed { index, item ->
                         val barHeight = if (maxIncome == 0f) 0f else (item.income / maxIncome) * canvasHeight
+
+                        // 🎨 Color logic
+                        val currentColor = when {
+                            item.income < 3800f -> Color(0xFFD32F2F)  //Danger Zone
+                            item.income < 7600f -> Color(0xFF1976D2)  //Average Zone (Soft Orange)
+                            else -> mainCardColor                   // High Performance Zone (Your color)
+                        }
+
                         drawRect(
-                            color = barColor,
+                            color = currentColor,
                             topLeft = Offset(
                                 x = index * (barWidth + spacing),
-                                y = canvasHeight - barHeight // bar er top
+                                y = canvasHeight - barHeight
                             ),
                             size = androidx.compose.ui.geometry.Size(barWidth, barHeight)
                         )
                     }
 
-                    // Y-axis
                     drawLine(axisColor, start = Offset(0f, 0f), end = Offset(0f, canvasHeight), strokeWidth = 2f)
-                    // X-axis
                     drawLine(axisColor, start = Offset(0f, canvasHeight), end = Offset(size.width, canvasHeight), strokeWidth = 2f)
                 }
             }
         }
 
-        // X-axis labels under bar
         Row(
             modifier = Modifier
                 .horizontalScroll(scrollState)
@@ -95,8 +97,7 @@ fun MonthlyIncomeBarChart(
         ) {
             data.forEach { item ->
                 Box(
-                    modifier = Modifier
-                        .width(barWidthDp + spacingDp),
+                    modifier = Modifier.width(barWidthDp + spacingDp),
                     contentAlignment = Alignment.TopCenter
                 ) {
                     BasicText(
@@ -106,8 +107,44 @@ fun MonthlyIncomeBarChart(
                 }
             }
         }
+
+        // Optional: Add a color legend below chart
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            LegendItem(color = Color(0xFFD32F2F), label = "Low (<3800)")
+            LegendItem(color = Color(0xFF1976D2), label = "Average (3800–7599)")
+            LegendItem(color = mainCardColor, label = "High (≥7600)")
+        }
     }
 }
+
+@Composable
+fun LegendItem(color: Color, label: String) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Box(
+            modifier = Modifier
+                .size(16.dp)
+                .padding(end = 4.dp)
+                .padding(2.dp)
+                .let { it.then(Modifier) },
+            contentAlignment = Alignment.Center
+        ) {
+            Canvas(modifier = Modifier.size(12.dp)) {
+                drawRect(color = color)
+            }
+        }
+        BasicText(
+            text = label,
+            style = TextStyle(color = Color.Black, fontSize = 10.sp)
+        )
+    }
+}
+
 
 @Preview(showBackground = true, widthDp = 420, heightDp = 300)
 @Composable

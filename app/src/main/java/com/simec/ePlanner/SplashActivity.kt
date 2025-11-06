@@ -56,14 +56,14 @@ fun SplashScreenUI() {
                 colorFilter = ColorFilter.tint(colorResource(id = R.color.white)),
                 modifier = Modifier
                     .padding(vertical = 16.dp)
-                    .size(60.dp)
+                    .size(80.dp)
 
             )
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = "Event Planner",
-                fontSize = 40.sp,
+                fontSize = 50.sp,
                 fontFamily = FontFamily.SansSerif,
                 color = colorResource(id = R.color.white),
                 fontWeight = FontWeight.Bold
