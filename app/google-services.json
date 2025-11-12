@@ -1,40 +1,21 @@
 {
   "project_info": {
-    "project_number": "463142564159",
-    "project_id": "e-planner-77ff0",
-    "storage_bucket": "e-planner-77ff0.firebasestorage.app"
+    "project_number": "775753115699",
+    "project_id": "event-planner-7ab60",
+    "storage_bucket": "event-planner-7ab60.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:463142564159:android:d62c1370fe2b2bcf00238a",
+        "mobilesdk_app_id": "1:775753115699:android:0d9559f320ee3b9b63db46",
         "android_client_info": {
-          "package_name": "com.simec.ePlanner"
+          "package_name": "com.simec.eventPlanner"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBrfkSBPqLRn4ss1WUvrl4Gui4DqhkPQ0U"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:463142564159:android:bdf3cc355853060e00238a",
-        "android_client_info": {
-          "package_name": "com.simec.eplanner"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBrfkSBPqLRn4ss1WUvrl4Gui4DqhkPQ0U"
+          "current_key": "AIzaSyD_Tdbr9KrNkYBivRUuD4o1xDmgTQ5AWdk"
         }
       ],
       "services": {
