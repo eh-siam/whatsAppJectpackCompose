@@ -46,6 +46,7 @@ import com.simec.eventPlanner.ui.model.samplePieData
 import com.simec.eventPlanner.ui.theme.NunitoMedium
 import com.simec.eventPlanner.R
 import com.simec.eventPlanner.ui.model.EventType
+import java.util.UUID
 
 /**
  * Created by Emdadul Haque Siam on 17,September,2025
@@ -323,18 +324,32 @@ fun HomeScreen(navController: NavHostController? = null){
                       Column(
                           modifier = Modifier
                       ) {
-                          val eventList = List(2) { EventType() } // 2 টি dummy EventType object
+                          // Dummy data বানানো, প্রতিটা item-এর জন্য unique ID
+                          val eventList = List(2) { index ->
+                              EventType(
+                                  id = UUID.randomUUID().toString(), // অথবা Firebase document id
+                                  type = "Event $index",
+                                  persons = 10,
+                                  date = "2025-11-13",
+                                  time = "10:00 AM",
+                                  location = "Location $index",
+                                  imageUrl = ""
+                              )
+                          }
 
                           LazyColumn(
                               modifier = Modifier.height(350.dp),
                               userScrollEnabled = false // scroll off
                           ) {
-                              items(eventList) { event ->
+                              items(
+                                  items = eventList,
+                                  key = { event -> event.id } // unique key
+                              ) { event ->
                                   EachEventCard(event = event)
                               }
                           }
-
                       }
+
                   }
 
                   Column(

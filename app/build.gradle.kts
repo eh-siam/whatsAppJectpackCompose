@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,8 +62,16 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material.icons.extended)
     implementation("io.coil-kt:coil-compose:2.6.0")
-    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+
+    // Firebase Firestore
+    implementation("com.google.firebase:firebase-firestore-ktx:24.4.3")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
+
+    implementation (platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation ("com.google.firebase:firebase-database-ktx")
+    implementation ("androidx.navigation:navigation-compose:2.7.7")
 
 
 

@@ -7,6 +7,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -50,26 +51,31 @@ fun EachEventCard(event: EventType) {
 
             // Event Image
             Card(
-                modifier = Modifier
-                    .size(120.dp),
+                modifier = Modifier.size(120.dp),
                 shape = RoundedCornerShape(10.dp),
                 elevation = CardDefaults.cardElevation(2.dp)
             ) {
+                val context = LocalContext.current
 
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
+                val imageRequest = remember(event.imageUrl) {
+                    ImageRequest.Builder(context)
                         .data(event.imageUrl)
                         .crossfade(true)
                         .placeholder(R.drawable.bg_background_rectangle)
                         .error(R.drawable.bg_background_rectangle)
-                        .memoryCacheKey(event.imageUrl)  // caching key
                         .diskCachePolicy(coil.request.CachePolicy.ENABLED)
-                        .build(),
+                        .memoryCacheKey(event.imageUrl)
+                        .build()
+                }
+
+                AsyncImage(
+                    model = imageRequest,
                     contentDescription = "Event Image",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
             }
+
 
             Spacer(modifier = Modifier.width(12.dp))
 
@@ -117,6 +123,7 @@ private fun EventInfoRow(label: String, value: String) {
 fun PreviewEachEventCard() {
     EachEventCard(
         event = EventType(
+            id = "",
             type = "Social Event",
             persons = 120,
             date = "09-10-25",

@@ -29,6 +29,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.navigation.NavHostController
 import com.simec.eventPlanner.ui.features.home.eventList.EachEventCard
 import com.simec.eventPlanner.ui.model.EventType
+import java.util.UUID
 
 /**
  * Created by Emdadul Haque Siam on 23,September,2025
@@ -42,8 +43,18 @@ fun EventsScreen(navController: NavHostController) {
 
     val listState = rememberLazyListState()
 
-    val eventList = List(10){index ->
-        EventType()
+
+
+    val eventList = List(10) { index ->
+        EventType(
+            id = UUID.randomUUID().toString(), // প্রতিটি item-এর জন্য unique key
+            type = "Event $index",
+            persons = index + 1,
+            date = "2025-11-13",
+            time = "10:00 AM",
+            location = "Location $index",
+            imageUrl = ""
+        )
     }
     Column(
         modifier = Modifier
@@ -83,10 +94,14 @@ fun EventsScreen(navController: NavHostController) {
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp),
             state = listState
         ) {
-            items(eventList) { event ->
+            items(
+                items = eventList,
+                key = { event -> event.id}   //  unique key (যেমন Firestore docId বা UUID)
+            ) { event ->
                 EachEventCard(event)
             }
         }
+
 
     }
 }
