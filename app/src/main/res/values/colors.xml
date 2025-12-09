@@ -13,10 +13,10 @@
     <color name="title">#263238</color>
     <color name="myCustomColor">#ebf1fd</color>
     <color name="CustomColor">#1976D2</color>
-    <color name="MainCardColor">#0f366d</color>
-    <color name="SubCardColor">#800F366D</color>
-    <color name="SubOneCardColor">#330F366D</color>
-    <color name="CardTextColor">#0f366d</color>
+    <color name="MainCardColor">#054456</color>
+    <color name="SubCardColor">#80054456</color>
+    <color name="SubOneCardColor">#33054456</color>
+    <color name="CardTextColor">#054456</color>
     <color name="Star">#DE0000</color>
     <color name="SecondaryCardColor">#800F366D</color>
     <color name="Wedding">#FFB515C0</color>

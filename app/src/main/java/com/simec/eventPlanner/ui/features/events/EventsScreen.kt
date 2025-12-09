@@ -27,6 +27,8 @@ import androidx.navigation.NavHostController
 import com.simec.eventPlanner.ui.features.home.eventList.EachEventCard
 import com.simec.eventPlanner.ui.model.EventType
 import java.util.UUID
+import androidx.compose.runtime.derivedStateOf
+
 
 @Composable
 fun EventsScreen(navController: NavHostController) {
@@ -34,29 +36,32 @@ fun EventsScreen(navController: NavHostController) {
     val eventList = remember {
         List(20) { index ->
             EventType(
-                id = UUID.randomUUID().toString(), // এখন এই id স্থিতিশীল থাকবে
+                id = UUID.randomUUID().toString(),
                 type = if (index % 2 == 0) "Wedding" else "Birthday",
                 persons = (index + 1) * 5,
                 date = "2025-11-${index + 1}",
                 time = "10:00 AM",
                 location = "Location $index, Dhaka",
-                imageUrl = "https://picsum.photos/seed/$index/300/200"
+                imageUrl = "https://via.placeholder.com/300x200.png"
             )
         }
     }
 
     var searchText by remember { mutableStateOf("") }
 
-    val filteredEvents = remember(searchText, eventList) { // eventList-কে এখানেও যোগ করুন
-        if (searchText.isBlank()) {
-            eventList
-        } else {
-            eventList.filter {
-                it.type.contains(searchText, ignoreCase = true) ||
-                        it.location.contains(searchText, ignoreCase = true)
+    val filteredEvents by remember(searchText) {
+        derivedStateOf {
+            if (searchText.isBlank()) {
+                eventList
+            } else {
+                eventList.filter {
+                    it.type.contains(searchText, true) ||
+                            it.location.contains(searchText, true)
+                }
             }
         }
     }
+
 
     Column(
         modifier = Modifier

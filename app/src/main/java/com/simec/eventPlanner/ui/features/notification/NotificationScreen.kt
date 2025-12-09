@@ -135,7 +135,7 @@ fun FilterChipItem(
             onClick()
         },
         shape = RoundedCornerShape(50),
-        color = if (isSelected) Color(0xFF3B82F6) else Color(0xFFDEE8FC)
+        color = if (isSelected) Color(0xFF054456) else Color(0x33054456)
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp),
@@ -151,7 +151,7 @@ fun FilterChipItem(
 
             Surface(
                 shape = CircleShape,
-                color = if (isSelected) Color.White else Color(0xFF3B82F6)
+                color = if (isSelected) Color.White else Color(0xFF054456)
             ) {
                 Text(
                     text = count.toString(),

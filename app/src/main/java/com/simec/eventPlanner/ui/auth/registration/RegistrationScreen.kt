@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -31,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.google.android.play.core.integrity.r
 import com.simec.eventPlanner.R
 import com.simec.eventPlanner.ui.navigation.Screen
 
@@ -40,6 +43,9 @@ fun RegistrationScreen(
     registrationViewModel: RegistrationViewModel = viewModel()
 ) {
     val uiState by registrationViewModel.uiState.collectAsState()
+    val registrationResult by registrationViewModel.registrationResult.collectAsState()
+    val context = LocalContext.current
+
 
     Column(
         modifier = Modifier
@@ -117,14 +123,17 @@ fun RegistrationScreen(
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = { registrationViewModel.register() },
+            onClick = { registrationViewModel.registerUser() },
             modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(10.dp)
+            shape = RoundedCornerShape(10.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = colorResource(id = R.color.MainCardColor),
+                contentColor = Color.White
+            )
         ) {
-            Text("Register",
-                Modifier.padding(
-                    5.dp
-                )
+            Text(
+                text = "Register",
+                modifier = Modifier.padding(5.dp)
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -136,6 +145,21 @@ fun RegistrationScreen(
             shape = RoundedCornerShape(10.dp)
         ) {
             Text("Already have an account? Login")
+        }
+    }
+
+    // Observe registration result
+    registrationResult?.let { result ->
+        when(result) {
+            is RegistrationResult.Success -> {
+                android.widget.Toast.makeText(context, result.message, android.widget.Toast.LENGTH_SHORT).show()
+                navController.navigate(Screen.Login.route) {
+                    popUpTo(Screen.Login.route) { inclusive = true }
+                }
+            }
+            is RegistrationResult.Error -> {
+                android.widget.Toast.makeText(context, result.message, android.widget.Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

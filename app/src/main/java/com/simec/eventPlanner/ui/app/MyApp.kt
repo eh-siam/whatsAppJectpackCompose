@@ -6,7 +6,7 @@ import androidx.navigation.compose.rememberNavController
 import com.simec.eventPlanner.ui.navigation.AppNavHost
 
 @Composable
-fun MyApp() {
+fun MyApp(startDestination: String) {
     val navController = rememberNavController()
     AppNavHost(
         navController = navController,

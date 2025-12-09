@@ -1,5 +1,6 @@
 package com.simec.eventPlanner.ui.features.settings.account_actions
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import com.simec.eventPlanner.R
 import androidx.compose.foundation.background
@@ -36,7 +37,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.simec.eventPlanner.ui.auth.logIn.LoginScreen
 import com.simec.eventPlanner.ui.components.CustomAppBar
+import com.simec.eventPlanner.ui.navigation.Screen
 import com.simec.eventPlanner.ui.theme.NunitoMedium
 import com.simec.eventPlanner.ui.theme.NunitoSemiBold
 
@@ -304,7 +309,7 @@ fun AccountActionScreen(navController: NavHostController) {
                     }
                 }
 
-                // ✅ Logout confirmation dialog
+                // Logout confirmation dialog
                 if (showLogoutDialog) {
                     AlertDialog(
                         onDismissRequest = { showLogoutDialog = false },
@@ -314,6 +319,14 @@ fun AccountActionScreen(navController: NavHostController) {
                             TextButton(
                                 onClick = {
                                     showLogoutDialog = false
+                                    FirebaseAuth.getInstance().signOut()
+
+                                    navController.navigate(Screen.Login.route){
+                                        popUpTo(Screen.Login.route) {
+                                            inclusive = true
+                                        }
+                                    }
+
                                 }
                             ) {
                                 Text("Yes")

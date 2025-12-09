@@ -94,7 +94,7 @@ fun HomeScreen(navController: NavHostController? = null) {
                     text = "Add(+)",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = colorResource(id = R.color.CustomColor),
+                    color = colorResource(id = R.color.MainCardColor),
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
                         .clickable {
@@ -199,7 +199,7 @@ fun HomeScreen(navController: NavHostController? = null) {
                     text = "View All",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = colorResource(id = R.color.CustomColor)
+                    color = colorResource(id = R.color.MainCardColor)
                 )
             }
         }

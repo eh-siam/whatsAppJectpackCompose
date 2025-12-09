@@ -1,1 +1,0 @@
-// This file has been moved to EventTypeCategory.kt and can be safely deleted.
