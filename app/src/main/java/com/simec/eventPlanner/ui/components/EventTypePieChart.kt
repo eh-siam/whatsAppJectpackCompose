@@ -2,16 +2,27 @@ package com.simec.eventPlanner.ui.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -26,7 +37,17 @@ fun EventTypePieChart(
     modifier: Modifier = Modifier,
     strokeWidth: Dp = 40.dp
 ) {
-    val totalCount = data.sumOf { it.count.toDouble() }.toFloat()
+    // Perform calculations only when the input 'data' changes.
+    // This is a key performance optimization to prevent re-calculation on every recomposition.
+    val chartData = remember(data) {
+        val total = data.sumOf { it.count.toDouble() }.toFloat()
+        val angles = data.map {
+            if (total == 0f) 0f else (it.count / total) * 360f
+        }
+        total to angles
+    }
+    val totalCount = chartData.first
+    val sweepAngles = chartData.second
 
     Row(
         modifier = modifier
@@ -43,11 +64,9 @@ fun EventTypePieChart(
         ) {
             Canvas(modifier = Modifier.fillMaxSize()) {
                 var startAngle = -90f
-                data.forEach { item ->
-                    val sweepAngle =
-                        if (totalCount == 0f) 0f else (item.count / totalCount) * 360f
+                sweepAngles.forEachIndexed { index, sweepAngle ->
                     drawArc(
-                        color = item.color,
+                        color = data[index].color,
                         startAngle = startAngle,
                         sweepAngle = sweepAngle,
                         useCenter = false,
@@ -70,6 +89,7 @@ fun EventTypePieChart(
                     text = totalCount.toInt().toString(),
                     style = TextStyle(
                         fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
                         color = Color.Black
                     )
                 )

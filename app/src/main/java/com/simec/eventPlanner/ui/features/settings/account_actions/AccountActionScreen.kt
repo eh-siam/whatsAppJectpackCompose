@@ -35,18 +35,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import androidx.navigation.compose.rememberNavController
+import com.simec.eventPlanner.ui.components.CustomAppBar
 import com.simec.eventPlanner.ui.theme.NunitoMedium
 import com.simec.eventPlanner.ui.theme.NunitoSemiBold
 
 @Composable
 fun AccountActionScreen(navController: NavHostController) {
-
     var showLogoutDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
-            CustomAppBarWithCard(
+            CustomAppBar(
                 title = "Account Action",
                 onBackClick = { navController.popBackStack() }
             )
@@ -340,5 +340,5 @@ fun AccountActionScreen(navController: NavHostController) {
 @Preview(showBackground = true)
 @Composable
 fun AccountActionPreview() {
-    AccountActionScreen(navController = NavHostController(LocalContext.current))
+    AccountActionScreen(navController = rememberNavController())
 }

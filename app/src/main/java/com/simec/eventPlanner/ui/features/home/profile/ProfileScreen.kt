@@ -12,7 +12,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import androidx.navigation.compose.rememberNavController
+import com.simec.eventPlanner.ui.components.CustomAppBar
 
 /**
  * Created by Emdadul Haque Siam on 24,September,2025
@@ -20,9 +21,9 @@ import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
  */
 
 @Composable
-fun ProfileScreen(navController: NavHostController){
+fun ProfileScreen(navController: NavHostController) {
     Scaffold(
-        topBar = { CustomAppBarWithCard(
+        topBar = { CustomAppBar(
             title = "Profile",
             onBackClick = { navController.popBackStack() }
         )}
@@ -35,16 +36,15 @@ fun ProfileScreen(navController: NavHostController){
             Text(
                 text = "Profile Screen",
                 modifier = Modifier
-                    .padding(10.dp)
+                    .padding(top = 10.dp, start = 20.dp, end = 10.dp)
 
             )
         }
     }
-
-
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun ProfileScreen() {
+fun ProfileScreenPreview() {
+    ProfileScreen(navController = rememberNavController())
 }

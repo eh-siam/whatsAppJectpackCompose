@@ -12,14 +12,14 @@ import androidx.compose.ui.unit.dp
 import com.simec.eventPlanner.R
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import com.simec.eventPlanner.ui.components.CustomAppBar
 import com.simec.eventPlanner.ui.theme.NunitoSemiBold
 
 @Composable
 fun DeactivateScreen(navController: NavController) {
     Scaffold(
         topBar = {
-            CustomAppBarWithCard(
+            CustomAppBar(
                 title = "Delete or Deactivate",
                 onBackClick = { navController.popBackStack() }
             )

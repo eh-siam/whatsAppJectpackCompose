@@ -11,15 +11,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import com.simec.eventPlanner.ui.components.CustomAppBar
 
 @Composable
 fun PayoutMethodsScreen(navController: NavHostController){
     Scaffold(
-        topBar = { CustomAppBarWithCard(
-            title = "Payout Methods",
-            onBackClick = { navController.popBackStack() }
-        )}
+        topBar = {
+            CustomAppBar(
+                title = "Payout Methods",
+                onBackClick = { navController.popBackStack() }
+            )
+        }
     ){ innerPadding ->
         Column(modifier = Modifier
             .fillMaxSize()

@@ -5,12 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.simec.eventPlanner.ui.features.calendar.CalenderScreen
-import com.simec.eventPlanner.ui.features.events.EventsScreen
-import com.simec.eventPlanner.ui.features.home.HomeScreen
+import com.simec.eventPlanner.ui.auth.logIn.LoginScreen
+import com.simec.eventPlanner.ui.auth.registration.RegistrationScreen
 import com.simec.eventPlanner.ui.features.home.add.AddScreen
 import com.simec.eventPlanner.ui.features.home.profile.ProfileScreen
-import com.simec.eventPlanner.ui.features.settings.SettingsScreen
 import com.simec.eventPlanner.ui.features.settings.account_actions.AccountActionScreen
 import com.simec.eventPlanner.ui.features.settings.account_actions.change_password.ChangePasswordScreen
 import com.simec.eventPlanner.ui.features.settings.account_actions.deactivate.DeactivateScreen
@@ -23,41 +21,30 @@ import com.simec.eventPlanner.ui.features.settings.payment.payout_methods.Payout
 import com.simec.eventPlanner.ui.features.settings.support.SupportScreen
 
 
-/**
- * Created by Emdadul Haque Siam on 17,September,2025
- * Copyright (c): SIMEC System Ltd.
- */
-
 @Composable
-fun AppNavHost(navController: NavHostController , modifier : Modifier) {
+fun AppNavHost(navController: NavHostController, modifier: Modifier) {
     NavHost(
         navController = navController,
-        startDestination = "home",
+        startDestination = Screen.Login.route, // Start with the main screen that has the bottom nav
         modifier = modifier
-
     ) {
-
-        composable("home") {
-            HomeScreen(navController)
+        composable(Screen.Login.route) {
+            LoginScreen(navController = navController)
         }
-        composable("calendar") {
-            CalenderScreen(navController)
+        composable(Screen.Registration.route) {
+            RegistrationScreen(navController = navController)
         }
-        composable("events") {
-            EventsScreen(navController)
-        }
-        composable("settings") {
-            SettingsScreen(navController)
+        composable(Screen.Main.route) {
+            BottomNavigation(mainNavController = navController) // The screen with the Scaffold and bottom nav
         }
 
-        //HomeScreen
+        // --- Other screens without bottom navigation ---
         composable("profile") {
-            ProfileScreen(navController)
+            ProfileScreen(navController = navController)
         }
         composable("add") {
             AddScreen(navController = navController)
         }
-        //Settings Screen (option)
         composable("event") {
             EventPreferenceScreen(navController = navController)
         }
@@ -82,7 +69,6 @@ fun AppNavHost(navController: NavHostController , modifier : Modifier) {
         composable("account_actions") {
             AccountActionScreen(navController = navController)
         }
-
         composable("changePassword") {
             ChangePasswordScreen(navController = navController)
         }

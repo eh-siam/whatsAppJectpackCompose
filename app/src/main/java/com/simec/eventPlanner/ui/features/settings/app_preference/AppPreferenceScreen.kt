@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import com.simec.eventPlanner.ui.components.CustomAppBar
 
 /**
  * Created by Emdadul Haque Siam on 09,October,2025
@@ -19,7 +19,7 @@ import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
 @Composable
 fun AppPreferenceScreen(navController: NavHostController){
     Scaffold(
-        topBar = { CustomAppBarWithCard(
+        topBar = { CustomAppBar(
             title = "App Preference",
             onBackClick = { navController.popBackStack() }
         )}

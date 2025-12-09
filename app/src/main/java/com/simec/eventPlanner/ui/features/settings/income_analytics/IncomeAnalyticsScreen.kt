@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import com.simec.eventPlanner.ui.components.CustomAppBar
 import com.simec.eventPlanner.ui.components.MonthlyIncomeBarChart
 import com.simec.eventPlanner.ui.model.sampleMonthlyIncome
 import com.simec.eventPlanner.ui.theme.NunitoSemiBold
@@ -29,10 +29,12 @@ import com.simec.eventPlanner.ui.theme.NunitoSemiBold
 @Composable
 fun EventAnalyticsScreen(navController: NavHostController){
     Scaffold(
-        topBar = { CustomAppBarWithCard(
-            title = "Income Analytics",
-            onBackClick = { navController.popBackStack() }
-        )}
+        topBar = {
+            CustomAppBar(
+                title = "Income Analytics",
+                onBackClick = { navController.popBackStack() }
+            )
+        }
     ){ innerPadding ->
         Column(modifier = Modifier
             .fillMaxSize()

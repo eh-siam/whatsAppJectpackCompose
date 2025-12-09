@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.simec.eventPlanner.R
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import com.simec.eventPlanner.ui.components.CustomAppBar
 import com.simec.eventPlanner.ui.theme.NunitoSemiBold
 
 /**
@@ -42,7 +42,7 @@ import com.simec.eventPlanner.ui.theme.NunitoSemiBold
 @Composable
 fun PaymentScreen(navController: NavHostController){
     Scaffold(
-        topBar = { CustomAppBarWithCard(
+        topBar = { CustomAppBar(
             title = "Payment & Billing",
             onBackClick = { navController.popBackStack() }
         )}

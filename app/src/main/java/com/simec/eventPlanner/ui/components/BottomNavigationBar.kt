@@ -4,10 +4,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.Event
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -45,10 +47,10 @@ fun BottomNavigationBar(navController: NavController) {
                 unselectedIcon = Icons.Outlined.Home
             ),
             BottomNavigationItem(
-                title = "Calendar",
-                route = "calendar",
-                selectedIcon = Icons.Filled.CalendarMonth,
-                unselectedIcon = Icons.Outlined.CalendarMonth
+                title = "Notification",
+                route = "notification",
+                selectedIcon = Icons.Filled.Notifications,
+                unselectedIcon = Icons.Outlined.Notifications
             ),
             BottomNavigationItem(
                 title = "Events",

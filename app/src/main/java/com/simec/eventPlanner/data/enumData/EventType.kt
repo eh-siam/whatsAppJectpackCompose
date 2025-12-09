@@ -1,16 +1,1 @@
-package com.simec.eventPlanner.data.enumData
-
-enum class EventType(val displayName: String) {
-    WEDDING("Wedding"),
-    BIRTHDAY("Birthday"),
-    CONFERENCE("Conference"),
-    WORKSHOP("Workshop"),
-    WEBINAR("Webinar"),
-    MEETUP("Meetup");
-
-    companion object {
-        fun getAllTypes(): List<String> {
-            return values().map { it.displayName }
-        }
-    }
-}
+// This file has been moved to EventTypeCategory.kt and can be safely deleted.

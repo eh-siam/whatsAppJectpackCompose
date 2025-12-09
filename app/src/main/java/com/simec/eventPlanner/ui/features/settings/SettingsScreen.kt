@@ -186,9 +186,7 @@ fun SettingsScreen(navController: NavHostController) {
                             .clip(CircleShape)
                             .padding(horizontal = 10.dp)
                     )
-
                 }
-
             }
 
             //Rewards & Membership
@@ -319,16 +317,13 @@ fun SettingsScreen(navController: NavHostController) {
             Card(
                 modifier = Modifier
                     .padding(top = 16.dp)
-                    .fillMaxWidth()
-                    .background(Color.White),
+                    .fillMaxWidth(),
                 elevation = CardDefaults.cardElevation(2.dp),
                 shape = RoundedCornerShape(10.dp),
                 onClick = {
                     navController.navigate("account_actions")
                 }
             ) {
-
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -345,7 +340,6 @@ fun SettingsScreen(navController: NavHostController) {
                             .padding(horizontal = 10.dp, vertical = 20.dp)
 
                     )
-
                     Image(
                         painter = painterResource(R.drawable.arrow__11_),
                         contentDescription = "Arrow ",

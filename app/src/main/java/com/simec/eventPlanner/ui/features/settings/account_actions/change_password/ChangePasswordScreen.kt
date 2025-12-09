@@ -26,7 +26,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.simec.eventPlanner.ui.components.CustomAppBarWithCard
+import com.simec.eventPlanner.ui.components.CustomAppBar
 import com.simec.eventPlanner.ui.theme.NunitoMedium
 
 @Composable
@@ -40,7 +40,7 @@ fun ChangePasswordScreen(navController: NavHostController){
 
     Scaffold(
         topBar = {
-            CustomAppBarWithCard(
+            CustomAppBar(
                 title = "Change Password",
                 onBackClick = { navController.popBackStack() }
             )

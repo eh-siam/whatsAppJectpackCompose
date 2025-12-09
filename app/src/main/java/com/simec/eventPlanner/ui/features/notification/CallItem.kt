@@ -1,4 +1,4 @@
-package com.simec.eventPlanner.ui.features.calendar
+package com.simec.eventPlanner.ui.features.notification
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -18,12 +18,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.SemiBold
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.simec.eventPlanner.R
+import com.simec.eventPlanner.ui.features.home.HomeScreen
 
 /**
  * Created by Emdadul Haque Siam on 21,September,2025
@@ -32,7 +36,7 @@ import com.simec.eventPlanner.R
 
 
 @Composable
-fun HomeItem (count: Int){
+fun CallItem (count: Int){
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -88,3 +92,10 @@ fun HomeItem (count: Int){
         }
     }
 }
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewCallScreen() {
+    CallItem(count = 1)
+}
+

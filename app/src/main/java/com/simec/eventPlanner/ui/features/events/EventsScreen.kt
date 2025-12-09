@@ -1,5 +1,3 @@
-package com.simec.eventPlanner.ui.features.events
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,8 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Divider
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,38 +23,41 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.lazy.items
-
 import androidx.navigation.NavHostController
 import com.simec.eventPlanner.ui.features.home.eventList.EachEventCard
 import com.simec.eventPlanner.ui.model.EventType
 import java.util.UUID
 
-/**
- * Created by Emdadul Haque Siam on 23,September,2025
- * Copyright (c): SIMEC System Ltd.
- */
-
 @Composable
 fun EventsScreen(navController: NavHostController) {
 
+    val eventList = remember {
+        List(20) { index ->
+            EventType(
+                id = UUID.randomUUID().toString(), // এখন এই id স্থিতিশীল থাকবে
+                type = if (index % 2 == 0) "Wedding" else "Birthday",
+                persons = (index + 1) * 5,
+                date = "2025-11-${index + 1}",
+                time = "10:00 AM",
+                location = "Location $index, Dhaka",
+                imageUrl = "https://picsum.photos/seed/$index/300/200"
+            )
+        }
+    }
+
     var searchText by remember { mutableStateOf("") }
 
-    val listState = rememberLazyListState()
-
-
-
-    val eventList = List(10) { index ->
-        EventType(
-            id = UUID.randomUUID().toString(), // প্রতিটি item-এর জন্য unique key
-            type = "Event $index",
-            persons = index + 1,
-            date = "2025-11-13",
-            time = "10:00 AM",
-            location = "Location $index",
-            imageUrl = ""
-        )
+    val filteredEvents = remember(searchText, eventList) { // eventList-কে এখানেও যোগ করুন
+        if (searchText.isBlank()) {
+            eventList
+        } else {
+            eventList.filter {
+                it.type.contains(searchText, ignoreCase = true) ||
+                        it.location.contains(searchText, ignoreCase = true)
+            }
+        }
     }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -64,50 +66,42 @@ fun EventsScreen(navController: NavHostController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp)
-                .align(Alignment.CenterHorizontally)
-        ){
-
+                .padding(vertical = 16.dp),
+            contentAlignment = Alignment.Center
+        ) {
             Text(
                 text = "All Events",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black,
-                modifier = Modifier
-                    .padding(start = 10.dp)
-                    .align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center)
             )
-
         }
 
         OutlinedTextField(
             value = searchText,
             onValueChange = { searchText = it },
-            placeholder = { Text("Search") },
+            placeholder = { Text("Search by type or location") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 16.dp, start = 16.dp, end = 16.dp),
-            shape = RoundedCornerShape(8.dp)
+                .padding(horizontal = 16.dp),
+            shape = RoundedCornerShape(8.dp),
+            singleLine = true
         )
 
         LazyColumn(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp),
-            state = listState
+            modifier = Modifier.padding(top = 10.dp)
         ) {
-            items(
-                items = eventList,
-                key = { event -> event.id}   //  unique key (যেমন Firestore docId বা UUID)
-            ) { event ->
+            items(filteredEvents, key = { it.id }) { event ->
                 EachEventCard(event)
+                Divider(modifier = Modifier.padding(horizontal = 16.dp))
             }
         }
-
-
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewHomeScreen() {
+fun PreviewEventsScreen() {
     EventsScreen(navController = NavHostController(LocalContext.current))
 }
