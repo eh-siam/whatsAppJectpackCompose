@@ -8,7 +8,10 @@ import androidx.navigation.compose.composable
 import com.simec.eventPlanner.ui.auth.logIn.LoginScreen
 import com.simec.eventPlanner.ui.auth.registration.RegistrationScreen
 import com.simec.eventPlanner.ui.features.home.add.AddScreen
+import com.simec.eventPlanner.ui.features.home.add.addDetails.AddDetailsScreen
+import com.simec.eventPlanner.ui.features.home.chat.ChatScreen
 import com.simec.eventPlanner.ui.features.home.profile.ProfileScreen
+import com.simec.eventPlanner.ui.features.home.profile.edit_profile.EditProfileScreen
 import com.simec.eventPlanner.ui.features.settings.account_actions.AccountActionScreen
 import com.simec.eventPlanner.ui.features.settings.account_actions.change_password.ChangePasswordScreen
 import com.simec.eventPlanner.ui.features.settings.account_actions.deactivate.DeactivateScreen
@@ -45,8 +48,20 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier) {
         composable("add") {
             AddScreen(navController = navController)
         }
+        composable("edit_profile") {
+            EditProfileScreen(navController = navController)
+        }
+        composable("add_event") {
+            EditProfileScreen(navController = navController)
+        }
+        composable("chat") {
+            ChatScreen(navController = navController)
+        }
         composable("event") {
             EventPreferenceScreen(navController = navController)
+        }
+        composable("add_event_details") {
+            AddDetailsScreen(navController = navController)
         }
         composable("payments") {
             PaymentScreen(navController = navController)

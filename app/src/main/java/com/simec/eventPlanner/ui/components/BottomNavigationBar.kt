@@ -91,7 +91,7 @@ fun BottomNavigationBar(navController: NavController) {
                 label = {
                     Text(
                         text = item.title,
-                        color = if (isSelected) Color(0xFF1565C0) else Color.Gray
+                        color = if (isSelected) Color(0xFF054456) else Color.Gray
                     )
                 },
                 alwaysShowLabel = false, // Optional: true for Material3 guideline
@@ -99,7 +99,7 @@ fun BottomNavigationBar(navController: NavController) {
                     BadgedBox(
                         badge = {
                             item.badgeCount?.takeIf { it > 0 }?.let { count ->
-                                Badge(containerColor = Color(0xFF1565C0)) {
+                                Badge(containerColor = Color(0xFF054456)) {
                                     Text(
                                         text = count.toString(),
                                         color = Color.White
@@ -116,8 +116,8 @@ fun BottomNavigationBar(navController: NavController) {
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = Color(0xFF1565C0),
-                    selectedTextColor = Color(0xFF1565C0),
+                    selectedIconColor = Color(0xFF054456),
+                    selectedTextColor = Color(0xFF054456),
                     unselectedIconColor = Color.Gray,
                     unselectedTextColor = Color.Gray,
                     indicatorColor = Color(0xFFE3F2FD)

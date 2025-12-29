@@ -160,7 +160,7 @@ fun FilterChipItem(
                             horizontal = 6.dp,
                             vertical = 2.dp),
                     fontSize = 11.sp,
-                    color = if (isSelected) Color(0xFF3B82F6) else Color.White
+                    color = if (isSelected) Color(0xFF054456) else Color.White
                 )
             }
         }

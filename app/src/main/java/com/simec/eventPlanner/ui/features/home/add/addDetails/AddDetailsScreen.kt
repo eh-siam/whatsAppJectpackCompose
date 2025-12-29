@@ -1,127 +1,45 @@
-package com.simec.eventPlanner.ui.features.home.profile
+package com.simec.eventPlanner.ui.features.home.add.addDetails
 
-import android.R
-import android.util.Log
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.R
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.simec.eventPlanner.ui.components.CustomAppBar
 
-/**
- * Created by Emdadul Haque Siam on 24,September,2025
- * Copyright (c): SIMEC System Ltd.
- */
-
 @Composable
-fun ProfileScreen(navController: NavHostController) {
-
-    val context = LocalContext.current
-    val imagePicker = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent(),
-    ){
-        uri ->
-        Log.d("ImagePicker", "Selected image URI: $uri")
-    }
+fun AddDetailsScreen(navController: NavHostController){
     Scaffold(
         topBar = {
             CustomAppBar(
-                title = "Profile",
+                title = "Event Details",
                 onBackClick = { navController.popBackStack() }
             )
         }
-
-    ) { innerPadding ->
+    ) {
+        innerPadding ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .padding(innerPadding)
-                .background(Color.White),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize()
+                .background(colorResource(id = com.simec.eventPlanner.R.color.white))
         ) {
-
-            Divider(
-                color = colorResource(id = com.simec.eventPlanner.R.color.grey),
-                thickness = 0.5.dp,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Box(
-                modifier = Modifier
-                    .padding(top = 20.dp)
-                    .size(160.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(com.simec.eventPlanner.R.drawable.profile_1),
-                    contentDescription = "Profile Pic",
-                    modifier = Modifier
-                        .size(height = 160.dp, width = 160.dp)
-                        .clip(CircleShape)
-                        .border(0.3.dp, Color.Black, CircleShape)
-
-                )
-                IconButton(
-                    onClick = {
-                        imagePicker.launch("image/*")
-                    },
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .background(
-                            Color.White,
-                            shape = CircleShape
-                        )
-                ) {
-                    Icon(
-                        painterResource(id = com.simec.eventPlanner.R.drawable.edit),
-                        contentDescription = "Edit",
-                        modifier = Modifier
-                            .size(24.dp),
-                        tint = Color.Unspecified
-
-                    )
-                }
-            }
-            Text(
-                text = "Jenny Wilson",
-                modifier = Modifier
-                    .padding(top = 10.dp, start = 20.dp, end = 10.dp),
-                fontSize = 16.sp
-
-            )
 
             Row(
                 modifier = Modifier
@@ -132,8 +50,8 @@ fun ProfileScreen(navController: NavHostController) {
                 Text(
                     modifier = Modifier
                         .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Email",
+                        .weight(0.7f),
+                    text = "Event Name",
                     fontSize = 14.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.black)
                 )
@@ -144,23 +62,24 @@ fun ProfileScreen(navController: NavHostController) {
                     modifier = Modifier
                         .padding(start = 20.dp)
                         .weight(1f),
-                    text = "jenny@gmail.com",
+                    text = "Wedding",
                     fontSize = 16.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.level)
                 )
             }
 
+
             Row(
                 modifier = Modifier
-                    .padding(top = 10.dp)
+                    .padding(top = 8.dp)
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     modifier = Modifier
                         .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Gender",
+                        .weight(0.7f),
+                    text = "Registration Name",
                     fontSize = 14.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.black)
                 )
@@ -171,22 +90,24 @@ fun ProfileScreen(navController: NavHostController) {
                     modifier = Modifier
                         .padding(start = 20.dp)
                         .weight(1f),
-                    text = "Male",
+                    text = "Jone Doe",
                     fontSize = 16.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.level)
                 )
             }
+
+
             Row(
                 modifier = Modifier
-                    .padding(top = 10.dp)
+                    .padding(top = 8.dp)
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     modifier = Modifier
                         .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Address",
+                        .weight(0.7f),
+                    text = "Reg. Contact Number",
                     fontSize = 14.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.black)
                 )
@@ -197,24 +118,23 @@ fun ProfileScreen(navController: NavHostController) {
                     modifier = Modifier
                         .padding(start = 20.dp)
                         .weight(1f),
-                    text = "Plot#18, Block#B,Bashundhara R/A",
+                    text = "01858721723",
                     fontSize = 16.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.level)
                 )
             }
 
-
             Row(
                 modifier = Modifier
-                    .padding(top = 10.dp)
+                    .padding(top = 8.dp)
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     modifier = Modifier
                         .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "City",
+                        .weight(0.7f),
+                    text = "Registration Email",
                     fontSize = 14.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.black)
                 )
@@ -225,147 +145,23 @@ fun ProfileScreen(navController: NavHostController) {
                     modifier = Modifier
                         .padding(start = 20.dp)
                         .weight(1f),
-                    text = "Dhaka",
+                    text = "jon78@gmail.com",
                     fontSize = 16.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.level)
                 )
             }
 
-
             Row(
                 modifier = Modifier
-                    .padding(top = 10.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    modifier = Modifier
-                        .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Contact Number",
-                    fontSize = 14.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(horizontal = 4.dp),
-                    text = ":"
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(start = 16.dp)
-                        .weight(1f),
-                    text = "01625259111",
-                    fontSize = 16.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
-
-                )
-            }
-
-            Row(
-                modifier = Modifier
-                    .padding(top = 10.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    modifier = Modifier
-                        .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Designation",
-                    fontSize = 14.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(horizontal = 4.dp),
-                    text = ":"
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(start = 16.dp)
-                        .weight(1f),
-                    text = "Event Manager",
-                    fontSize = 16.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
-
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .padding(top = 10.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    modifier = Modifier
-                        .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Pre. Designation",
-                    fontSize = 14.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(horizontal = 4.dp),
-                    text = ":"
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(start = 16.dp)
-                        .weight(1f),
-                    text = "Asst. Event Manager",
-                    fontSize = 16.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
-
-                )
-            }
-
-            Row(
-                modifier = Modifier
-                    .padding(top = 10.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    modifier = Modifier
-                        .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Joining date",
-                    fontSize = 14.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(horizontal = 4.dp),
-                    text = ":"
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(start = 16.dp)
-                        .weight(1f),
-                    text = "10-12-2025",
-                    fontSize = 16.sp,
-                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
-
-                )
-            }
-
-            Row(
-                modifier = Modifier
-                    .padding(top = 10.dp)
+                    .padding(top = 8.dp)
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     modifier = Modifier
                         .padding(start = 20.dp)
-                        .weight(1f),
-                    text = "Facebook/LinkedIn",
+                        .weight(0.7f),
+                    text = "Event Type",
                     fontSize = 14.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.black)
                 )
@@ -376,49 +172,140 @@ fun ProfileScreen(navController: NavHostController) {
                     modifier = Modifier
                         .padding(start = 20.dp)
                         .weight(1f),
-                    text = "https://facebook.com",
+                    text = "Wedding",
                     fontSize = 16.sp,
                     color = colorResource(id = com.simec.eventPlanner.R.color.level)
                 )
             }
-            Column(
+
+            Row(
                 modifier = Modifier
-                    .padding(top = 20.dp)
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(0.7f),
+                    text = "Total Participants",
+                    fontSize = 14.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
+                )
+                Text(
+                    text = ":"
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(1f),
+                    text = "200",
+                    fontSize = 16.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(0.7f),
+                    text = "Date",
+                    fontSize = 14.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
+                )
+                Text(
+                    text = ":"
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(1f),
+                    text = "05-08-25",
+                    fontSize = 16.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(0.7f),
+                    text = "Time",
+                    fontSize = 14.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
+                )
+                Text(
+                    text = ":"
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(1f),
+                    text = "18:32",
+                    fontSize = 16.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(0.7f),
+                    text = "Location",
+                    fontSize = 14.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.black)
+                )
+                Text(
+                    text = ":"
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .weight(1f),
+                    text = "Army Golf Club, Tongi Diversion Rd, Dhaka 1206",
+                    fontSize = 16.sp,
+                    color = colorResource(id = com.simec.eventPlanner.R.color.level)
+                )
+            }
+
+
+            Button(
+                onClick = {
+                    navController?.navigate("submit")
+                },
+                modifier = Modifier
                     .fillMaxWidth()
+                    .padding(20.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = com.simec.eventPlanner.R.color.MainCardColor))
             ) {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 30.dp)
-                        .background(color = colorResource(id = R.color.white))
-                        .clickable{
-                            navController.navigate("edit_profile")
-                        },
-
-                    ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(colorResource(id = com.simec.eventPlanner.R.color.MainCardColor)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Edit Profile",
-                            modifier = Modifier
-                                .padding(16.dp),
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = colorResource(id = com.simec.eventPlanner.R.color.myCustomColor),
-                            fontSize = 16.sp
-                        )
-                    }
-                }
-
+                Text(
+                    text = "Submit"
+                )
             }
         }
     }
 }
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun ProfileScreenPreview() {
-    ProfileScreen(navController = rememberNavController())
+fun PreviewAddDetailsScreen(){
+    AddDetailsScreen(navController = NavHostController(LocalContext.current))
 }

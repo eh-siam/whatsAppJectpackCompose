@@ -380,7 +380,9 @@ fun AddScreen(navController: NavHostController? = null) {
 
             // Add Button
             Button(
-                onClick = { /* Handle button click */ },
+                onClick = {
+                    navController?.navigate("add_event_details")
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 24.dp)

@@ -106,10 +106,6 @@ fun LoginScreen(
         loginResult?.let {
             when(it){
                 is LoginResult.Success -> {
-
-                    val prefs = context.getSharedPreferences("my_prefs", 0)
-                    prefs.edit().putBoolean("isLoggedIn", true).apply()
-
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
 
                     navController.navigate(Screen.Main.route){

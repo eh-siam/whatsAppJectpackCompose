@@ -2,23 +2,11 @@ package com.simec.eventPlanner.ui.features.settings.event_preference
 
 import android.app.TimePickerDialog
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Switch
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -28,121 +16,129 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.simec.eventPlanner.R
+import com.simec.eventPlanner.ui.components.CustomAppBar
 import com.simec.eventPlanner.ui.theme.NunitoMedium
 import com.simec.eventPlanner.ui.theme.NunitoSemiBold
 import java.util.Calendar
 
 /**
- * Created by Emdadul Haque Siam on 09,October,2025
+ * Created by Emdadul Haque Siam on 09, October, 2025
  * Copyright (c): SIMEC System Ltd.
  */
 
 @Composable
-fun EventPreferenceScreen(navController: NavHostController){
-    var isChecked by remember { mutableStateOf(false) }
+fun EventPreferenceScreen(navController: NavHostController) {
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.white))
-            .padding(top = 10.dp)
-    ) {
+    var isNotificationEnabled by rememberSaveable { mutableStateOf(false) }
+    var selectedTime by rememberSaveable { mutableStateOf("Select Time") }
 
-        Card(
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .fillMaxWidth()
-                .background(colorResource(id = R.color.white)),
-            shape = RoundedCornerShape(8.dp),
-            elevation = CardDefaults.cardElevation(2.dp)
-        ) {
-            Text(
-                text = "Default event type",
-                fontFamily = NunitoSemiBold,
-                fontSize = 16.sp,
-                color = colorResource(id = R.color.level),
-                modifier = Modifier
-                    .padding(vertical = 16.dp, horizontal = 16.dp)
+    val context = LocalContext.current
+    val calendar = remember { Calendar.getInstance() }
+
+    val timePickerDialog = remember {
+        TimePickerDialog(
+            context,
+            { _, hour, minute ->
+                selectedTime = String.format("%02d:%02d", hour, minute)
+            },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        )
+    }
+
+    Scaffold(
+        topBar = {
+            CustomAppBar(
+                title = "Event Preference",
+                onBackClick = { navController.popBackStack() }
             )
         }
+    ) { innerPadding ->
 
-        Box(
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 16.dp)
-
+                .fillMaxSize()
+                .background(colorResource(id = R.color.white))
+                .padding(innerPadding)
         ) {
-            Text(
-                text = "Notifications",
-                fontFamily = NunitoMedium,
-                color = colorResource(id = R.color.CardTextColor),
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Card(
                 modifier = Modifier
-                    .padding(vertical = 16.dp)
-            )
+                    .padding(horizontal = 16.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(8.dp),
+                elevation = CardDefaults.cardElevation(2.dp)
+            ) {
+                Text(
+                    text = "Default event type",
+                    fontFamily = NunitoSemiBold,
+                    fontSize = 16.sp,
+                    color = colorResource(id = R.color.level),
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             Row(
                 modifier = Modifier
-                    .align(Alignment.TopEnd)
-            ){
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Notifications",
+                    fontFamily = NunitoMedium,
+                    color = colorResource(id = R.color.CardTextColor)
+                )
                 Switch(
-                    checked = isChecked,
-                    onCheckedChange = {isChecked = it}
+                    checked = isNotificationEnabled,
+                    onCheckedChange = { isNotificationEnabled = it }
                 )
             }
-        }
 
-        Text(
-            text = "Language",
-            fontFamily = NunitoMedium,
-            color = colorResource(id = R.color.CardTextColor),
-            modifier = Modifier
-                .padding(vertical = 10.dp, horizontal = 16.dp)
-        )
-
-
-
-
-        Column {
+            Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Time zone",
-                fontFamily = NunitoSemiBold,
-                fontWeight = Bold,
+                text = "Language",
+                fontFamily = NunitoMedium,
                 color = colorResource(id = R.color.CardTextColor),
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Column(
                 modifier = Modifier
-                    .padding(vertical = 10.dp, horizontal = 16.dp)
-            )
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+            ) {
 
-            val context = LocalContext.current
-            var selectedTime by remember { mutableStateOf("Select Time") }
-
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-
-            val timePickerDialog = TimePickerDialog(
-                context,
-                { _, h: Int, m: Int ->
-                    selectedTime = String.format("%02d:%02d", h, m)
-                }, hour, minute, true
-            )
-
-            Column(modifier = Modifier.padding(10.dp)) {
                 Text(
-                    text = "Selected Time: $selectedTime",
-                    modifier = Modifier
-                        .padding(bottom = 5.dp, start = 5.dp),
-                    color = colorResource(id = R.color.MainCardColor)
-
+                    text = "Time zone",
+                    fontFamily = NunitoSemiBold,
+                    fontWeight = Bold,
+                    color = colorResource(id = R.color.CardTextColor)
                 )
 
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Selected Time - $selectedTime",
+                    color = colorResource(id = R.color.MainCardColor)
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 Button(
-                    onClick = { timePickerDialog.show() },
-                    modifier = Modifier
-                        .padding(horizontal = 5.dp)
-
-
+                    onClick = { timePickerDialog.show()
+                    }
                 ) {
                     Text(
                         text = "Pick Time",
@@ -153,8 +149,9 @@ fun EventPreferenceScreen(navController: NavHostController){
         }
     }
 }
-@Preview
+
+@Preview(showBackground = true)
 @Composable
-fun EventPreferencePreview(){
-    EventPreferenceScreen(navController = NavHostController(context = LocalContext.current))
+fun EventPreferencePreview() {
+    EventPreferenceScreen(navController = rememberNavController())
 }

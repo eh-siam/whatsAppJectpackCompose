@@ -46,7 +46,8 @@ fun PaymentScreen(navController: NavHostController){
             title = "Payment & Billing",
             onBackClick = { navController.popBackStack() }
         )}
-    ) { innerPadding ->
+    ) {
+        innerPadding ->
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(innerPadding)
@@ -391,7 +392,6 @@ fun PaymentScreen(navController: NavHostController){
             }
         }
     }
-
 }
 
 @Preview

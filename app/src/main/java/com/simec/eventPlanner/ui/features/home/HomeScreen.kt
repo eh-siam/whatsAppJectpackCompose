@@ -90,15 +90,16 @@ fun HomeScreen(navController: NavHostController? = null) {
                     color = colorResource(id = R.color.MainCardColor),
                     modifier = Modifier.align(Alignment.Center)
                 )
-                Text(
-                    text = "Add(+)",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = colorResource(id = R.color.MainCardColor),
+
+
+                Image(
+                    painter = painterResource(R.drawable.message),
+                    contentDescription = "Chat",
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
-                        .clickable {
-                            navController?.navigate("add")
+                        .size(24.dp)
+                        .clickable{
+                            navController?.navigate("chat")
                         }
                 )
             }
@@ -177,6 +178,38 @@ fun HomeScreen(navController: NavHostController? = null) {
                             )
                         }
                     }
+                }
+            }
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.White)
+                    .padding(horizontal = 16.dp, vertical = 10.dp)
+                    .clickable {
+                        navController?.navigate("add")
+                    },
+                shape = RoundedCornerShape(10.dp),
+
+            ) {
+                
+                Box (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(colorResource(id = R.color.SubOneCardColor)),
+                    contentAlignment = Alignment.Center
+
+                ){
+
+                    Text(
+                        text = "Add New Event (+)",
+                        modifier = Modifier
+                            .padding(16.dp),
+                        fontSize = 16.sp,
+                        color = colorResource(id = R.color.MainCardColor),
+                        fontWeight = FontWeight.Medium,
+                        )
+
                 }
             }
         }

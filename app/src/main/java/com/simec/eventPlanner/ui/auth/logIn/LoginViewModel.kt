@@ -54,7 +54,6 @@ class LoginViewModel : ViewModel() {
                 }
             }
     }
-
 }
 
 data class LoginUiState(

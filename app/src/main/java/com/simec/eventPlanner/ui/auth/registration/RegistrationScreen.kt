@@ -1,6 +1,5 @@
 package com.simec.eventPlanner.ui.auth.registration
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.google.android.play.core.integrity.r
 import com.simec.eventPlanner.R
 import com.simec.eventPlanner.ui.navigation.Screen
 
@@ -54,21 +52,31 @@ fun RegistrationScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-
         Icon(
             painter = painterResource(id = R.drawable.appstore),
             contentDescription = null,
             modifier = Modifier.size(200.dp),
             tint = Color.Unspecified
         )
-
-        Text(
-            text = "Find in your details below or sign up using your \n                   Event planner account.",
+        Column(
             modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp, top = 10.dp),
-            fontSize = 13.sp
-        )
+                .fillMaxWidth()
+                .padding(top = 10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Find in your details below or sign up using your",
+                modifier = Modifier
+                    .padding(start = 10.dp, end = 10.dp),
+                fontSize = 13.sp
+            )
+            Text(
+                text = "Event planner account",
+                modifier = Modifier
+                    .padding(start = 10.dp, end = 10.dp),
+                fontSize = 13.sp
+            )
+        }
 
         OutlinedTextField(
             value = uiState.name,

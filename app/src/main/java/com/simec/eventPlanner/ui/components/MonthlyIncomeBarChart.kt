@@ -24,7 +24,7 @@ import com.simec.eventPlanner.ui.model.sampleMonthlyIncome
 fun MonthlyIncomeBarChart(
     data: List<MonthlyIncome>,
     modifier: Modifier = Modifier,
-    mainCardColor: Color = Color(0xFF00469A), // 🔵 Your main color
+    mainCardColor: Color = Color(0xFF054456), // 🔵 Your main color
     axisColor: Color = Color.Gray,
     labelColor: Color = Color.Black,
     maxChartHeight: Dp = 200.dp,
@@ -70,7 +70,7 @@ fun MonthlyIncomeBarChart(
                         // 🎨 Color logic
                         val currentColor = when {
                             item.income < 3800f -> Color(0xFFD32F2F)  //Danger Zone
-                            item.income < 7600f -> Color(0xFF1976D2)  //Average Zone (Soft Orange)
+                            item.income < 7600f -> Color(0xB3054456)  //Average Zone (Soft Orange)
                             else -> mainCardColor                   // High Performance Zone (Your color)
                         }
 
@@ -117,7 +117,7 @@ fun MonthlyIncomeBarChart(
             verticalAlignment = Alignment.CenterVertically
         ) {
             LegendItem(color = Color(0xFFD32F2F), label = "Low (<3800)")
-            LegendItem(color = Color(0xFF1976D2), label = "Average (3800–7599)")
+            LegendItem(color = Color(0xB3054456), label = "Average (3800–7599)")
             LegendItem(color = mainCardColor, label = "High (≥7600)")
         }
     }
